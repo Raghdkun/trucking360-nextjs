@@ -72,7 +72,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ address, phone, email, 
             {/* Contact Information */}
             <div className="md:w-1/2 p-8 bg-primary text-white" data-aos="fade-right" data-aos-delay="300">
               <h3 className="text-2xl font-semibold mb-4">Get in Touch</h3>
-              <p className="mb-6 opacity-90">We're here to help and answer any question you might have.</p>
+              <p className="mb-6 opacity-90">We&apos;re here to help and answer any question you might have.</p>
               <div className="flex items-center mb-4">
                 <FaMapMarkerAlt className="mr-4 text-secondary text-xl" />
                 <span>{address}</span>

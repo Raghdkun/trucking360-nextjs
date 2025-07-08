@@ -25,8 +25,6 @@ const NotificationPage: React.FC<NotificationProps> = ({ notification = {} }) =>
   // Default to 404 if no type is specified
   const {
     type = '404',
-    header = 'Notification',
-    breadcrumb = 'Message',
     title,
     message,
   } = notification;

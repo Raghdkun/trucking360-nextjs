@@ -215,7 +215,7 @@ export default function ComingSoon() {
               The Future is <br /> <span className="text-gradient">Coming Soon</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-lg">
-              We're crafting something extraordinary. Prepare to experience innovation like never before.
+              We&apos;re crafting something extraordinary. Prepare to experience innovation like never before.
             </p>
           </div>
           <div className="md:w-1/2 flex justify-center items-center opacity-0" id="rocketSection" style={{ visibility: 'hidden' }}>

@@ -1,5 +1,4 @@
-"use client"
-import Image from "next/image";
+'use client';
 
 import Hero from '@/components/Hero'
 import SuccessStory from '@/components/SuccessStory'

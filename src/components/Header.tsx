@@ -100,7 +100,7 @@ const Header = () => {
                   </button>
                   <ul id="resourcesDropdownMenu" className={`absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ${isResourcesOpen ? '' : 'hidden'}`}>
                     <li><Link href="/comingsoon" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Newsletter</Link></li>
-                    <li><Link href="/faqs" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ's</Link></li>
+                    <li><Link href="/faqs" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQs</Link></li>
                     <li><Link href="/comingsoon" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Resources</Link></li>
                   </ul>
                 </li>
@@ -167,8 +167,7 @@ const Header = () => {
                 </button>
                 <ul id="mobile-resources-dropdown" className={`mt-2 space-y-2 ${isMobileResourcesOpen ? '' : 'hidden'}`}>
                   <li><Link href="/comingsoon" onClick={handleMobileLinkClick} className="text-primary text-xl hover:text-secondary transition-colors duration-300">Newsletter</Link></li>
-                  <li><Link href="/faqs" onClick={handleMobileLinkClick} className="text-primary text-xl hover:text-secondary transition-colors duration-300">FAQ's</Link></li>
-                  <li><Link href="/comingsoon" onClick={handleMobileLinkClick} className="text-primary text-xl hover:text-secondary transition-colors duration-300">Free Resources</Link></li>
+                  <li><Link href="/faqs" onClick={handleMobileLinkClick} className="text-primary text-xl hover:text-secondary transition-colors duration-300">FAQs</Link></li>
                 </ul>
               </li>
               <li>

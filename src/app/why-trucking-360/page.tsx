@@ -141,7 +141,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Discover why we're the preferred choice for AFPs. With a client-first
+            Discover why we&apos;re the preferred choice for AFPs. With a client-first
             approach, we deliver efficient, tailored solutions that drive your
             business toward achieving a Fantastic Plus rating. Our team combines
             expertise, transparency, and accountability to ensure your success,
@@ -165,7 +165,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
               </h3>
               <p className="text-gray-300">
                 We guarantee that your loads are managed efficiently, meeting
-                Amazon's strict schedules and safety standards on every trip.
+                Amazon&apos;s strict schedules and safety standards on every trip.
               </p>
             </div>
             <div
@@ -236,7 +236,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
               <p className="text-gray-300">
                 We understand that every AFP has unique needs. Our flexible
                 solutions are designed to your specific goals, ensuring alignment
-                with Amazon's high expectations.
+                with Amazon&apos;s high expectations.
               </p>
             </div>
           </div>

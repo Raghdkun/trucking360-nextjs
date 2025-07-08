@@ -30,7 +30,7 @@ const CallToAction: React.FC = () => {
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            Let's discuss how we can streamline your supply chain and improve your bottom line.
+            Let&apos;s discuss how we can streamline your supply chain and improve your bottom line.
           </p>
           {/* Use the Next.js <Link> component for internal navigation */}
           <Link

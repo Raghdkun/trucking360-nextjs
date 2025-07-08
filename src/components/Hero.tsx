@@ -46,7 +46,7 @@ const HeroSection: React.FC<HeroProps> = ({ website_name }) => {
         typed.destroy();
       };
     }
-  }, []);
+  }, [typedStrings]);
 
   return (
     <>

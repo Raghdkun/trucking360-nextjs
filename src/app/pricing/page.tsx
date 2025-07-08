@@ -285,7 +285,7 @@ const handleFaqKeyDown = (event: React.KeyboardEvent, index: number) => {
                                 </tr>
                                 <tr className="bg-primary/10 border-b border-gray-300">
                                     <td className="px-6 py-4 font-medium">Performance Disputes</td>
-                                    <td className="px-6 py-4">Handles performance disputes impacting the AFP's Operational Score,
+                                    <td className="px-6 py-4">Handles performance disputes impacting the AFP&apos;s Operational Score,
                                         preventing negative effects from Amazon-controllable factors.</td>
                                 </tr>
                                 <tr className="bg-white border-b border-gray-300">
@@ -317,7 +317,7 @@ const handleFaqKeyDown = (event: React.KeyboardEvent, index: number) => {
                                 </tr>
                                 <tr className="bg-primary/10 border-b border-gray-300">
                                     <td className="px-6 py-4 font-medium">Relay Load Notes</td>
-                                    <td className="px-6 py-4">Maintains detailed load notes to safeguard AFPs' scores and
+                                    <td className="px-6 py-4">Maintains detailed load notes to safeguard AFPs&apos; scores and
                                         operational performance so key stakeholders are informed of what transpired during the
                                         respective tour.</td>
                                 </tr>
@@ -387,7 +387,7 @@ const handleFaqKeyDown = (event: React.KeyboardEvent, index: number) => {
                             <tbody>
                                 <tr className="bg-white border-b border-gray-300">
                                     <td className="px-6 py-4 font-medium">Annual Inspections Tracking</td>
-                                    <td className="px-6 py-4">Ensures trucks' annual inspections are tracked and kept current to
+                                    <td className="px-6 py-4">Ensures trucks&apos; annual inspections are tracked and kept current to
                                         meet DOT requirements by identifying inspections nearing expiration, coordinating with
                                         on-site maintenance vendors and providing updated documentation.</td>
                                 </tr>

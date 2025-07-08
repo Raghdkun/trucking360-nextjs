@@ -67,7 +67,7 @@ const ContactPage: React.FC = () => {
         <div className="max-w-lg mx-auto w-full">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
           <h3 className="text-2xl font-semibold mb-4">Get in Touch</h3>
-          <p className="mb-8 opacity-90 text-lg">We're here to help and answer any question you might have.</p>
+          <p className="mb-8 opacity-90 text-lg">We&apos;re here to help and answer any question you might have.</p>
           <div className="space-y-6">
             <div className="flex items-center">
               <FaMapMarkerAlt className="mr-4 text-secondary text-2xl" />

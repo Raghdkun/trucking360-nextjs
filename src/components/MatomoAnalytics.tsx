@@ -36,6 +36,6 @@ export function MatomoAnalytics() {
 // You might need to declare _paq on the window object for TypeScript
 declare global {
   interface Window {
-    _paq: any[];
+    _paq: unknown[];
   }
 }
