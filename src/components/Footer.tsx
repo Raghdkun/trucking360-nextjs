@@ -45,7 +45,7 @@ const Footer = ({ settings }) => {
           {/* Company Description */}
           <div>
             <h3 className="text-xl md:text-2xl font-bold mb-4">Trucking 360</h3>
-            <p className="mb-4 text-sm md:text-base">{currentSettings.description}</p>
+            <p className="mb-4 text-sm md:text-base font-bold">{currentSettings.description}</p>
             <div className="flex space-x-4">
               <a href={currentSettings.linkedin_link} target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-secondary transition-colors duration-300">
                 <i className="fab fa-linkedin"></i>
