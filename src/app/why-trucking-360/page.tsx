@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 // Replace with your actual image path or import
 const leadershipImage = '/images/nickpic.jpg';
@@ -154,10 +155,12 @@ const WhyChooseUsAndLeadership: React.FC = () => {
               data-aos-delay="300"
             >
               <div className="mb-4">
-                <img
+                <Image
                   src="/images/reliability.svg"
                   alt="Reliability Icon"
-                  className="feature-icon w-12 h-12"
+                  width={48}
+                  height={48}
+                  className="feature-icon"
                 />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">
@@ -203,10 +206,12 @@ const WhyChooseUsAndLeadership: React.FC = () => {
               data-aos-delay="500"
             >
               <div className="mb-4">
-                <img
+                <Image
                   src="/images/safety.svg"
                   alt="Safety Icon"
-                  className="feature-icon w-12 h-12"
+                  width={48}
+                  height={48}
+                  className="feature-icon"
                 />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">
@@ -224,10 +229,12 @@ const WhyChooseUsAndLeadership: React.FC = () => {
               data-aos-delay="600"
             >
               <div className="mb-4">
-                <img
+                <Image
                   src="/images/solutions.svg"
                   alt="Customized Solutions Icon"
-                  className="feature-icon w-12 h-12"
+                  width={48}
+                  height={48}
+                  className="feature-icon"
                 />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">
@@ -258,10 +265,12 @@ const WhyChooseUsAndLeadership: React.FC = () => {
             </p>
           </div>
           <div className="mission-image max-w-[25%] ml-auto md:max-w-full md:ml-0 md:text-center">
-            <img 
+            <Image 
               src={missionImage} 
               alt="Mission Image" 
-              className="w-full h-auto object-contain md:w-4/5 md:mx-auto "
+              width={400}
+              height={300}
+              className="w-full h-auto object-contain md:w-4/5 md:mx-auto"
             />
           </div>
         </div>
@@ -271,9 +280,11 @@ const WhyChooseUsAndLeadership: React.FC = () => {
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="flex flex-col md:flex-row gap-12 items-start" data-aos="fade-up" data-aos-duration="800">
           <div className="w-full md:w-1/2 mt-4 md:mt-[1%]" data-aos="fade-right" data-aos-duration="1300">
-            <img
+            <Image
               src={leadershipImage}
               alt="Leadership Nicholas Krave"
+              width={600}
+              height={800}
               className="rounded-lg shadow-lg w-full"
             />
           </div>

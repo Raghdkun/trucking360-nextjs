@@ -85,7 +85,7 @@ const PricingPage: React.FC = () => {
     // Effect to calculate the total price when checkboxes change
     useEffect(() => {
         const total = services.reduce((acc, service) => {
-            // @ts-ignore
+            // @ts-expect-error - selectedServices type needs to be properly typed
             if (selectedServices[service.id]) {
                 return acc + service.price;
             }
@@ -200,7 +200,7 @@ const handleFaqKeyDown = (event: React.KeyboardEvent, index: number) => {
                                                     <input
                                                         type="checkbox"
                                                         className="form-checkbox text-primary focus:ring-primary h-4 w-4"
-                                                        // @ts-ignore
+                                                        // @ts-expect-error - selectedServices type needs to be properly typed
                                                         checked={selectedServices[service.id]}
                                                         onChange={() => handleCheckboxChange(service.id)}
                                                     />
