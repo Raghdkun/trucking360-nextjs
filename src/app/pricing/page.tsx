@@ -392,7 +392,7 @@ const handleFaqKeyDown = (event: React.KeyboardEvent, index: number) => {
                                         on-site maintenance vendors and providing updated documentation.</td>
                                 </tr>
                                 <tr className="bg-primary/10 border-b border-gray-300">
-                                    <td className="px-6 py-4 font-medium">Repair Orders' Invoice Tracking</td>
+                                    <td className="px-6 py-4 font-medium">Repair Orders&apos; Invoice Tracking</td>
                                     <td className="px-6 py-4">Tracks all repair orders for tractors, including dates, vendors, and
                                         costs, providing a comprehensive record of fleet-related expenses.</td>
                                 </tr>

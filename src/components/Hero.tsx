@@ -10,18 +10,19 @@ interface HeroProps {
   website_name: string;
 }
 
+// Move typedStrings outside the component to prevent recreation on every render
+const typedStrings = [
+  "Best-in-class dispatch service",
+  "Fully Automated Metric Dashboard With Daily Scores",
+  "Available 24/7 for your drivers",
+  "High-quality communication",
+  "Scorecard analysis and tailored action plans to achieve and maintain Fantastic Plus scores",
+  "Customized reports",
+  "Daily disputes",
+];
+
 const HeroSection: React.FC<HeroProps> = ({ website_name }) => {
   const typedEl = useRef<HTMLSpanElement>(null);
-
-  const typedStrings = [
-    "Best-in-class dispatch service",
-    "Fully Automated Metric Dashboard With Daily Scores",
-    "Available 24/7 for your drivers",
-    "High-quality communication",
-    "Scorecard analysis and tailored action plans to achieve and maintain Fantastic Plus scores",
-    "Customized reports",
-    "Daily disputes",
-  ];
 
   useEffect(() => {
     // Initialize Animate On Scroll (AOS)
@@ -46,7 +47,7 @@ const HeroSection: React.FC<HeroProps> = ({ website_name }) => {
         typed.destroy();
       };
     }
-  }, [typedStrings]);
+  }, []); // Remove typedStrings from dependencies since it's now constant
 
   return (
     <>
