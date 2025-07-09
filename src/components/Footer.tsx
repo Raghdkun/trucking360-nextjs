@@ -2,17 +2,21 @@
 
 import Link from 'next/link';
 
-// Define a type for the settings prop for better type-safety (optional but recommended)
-// interface Settings {
-//   description: string;
-//   linkedin_link: string;
-//   facebook_link: string;
-//   address: string;
-//   phone: string;
-//   email: string;
-// }
+// Define a type for the settings prop with optional properties
+interface Settings {
+  description?: string;
+  linkedin_link?: string;
+  facebook_link?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+}
 
-const Footer = ({ settings }) => {
+interface FooterProps {
+  settings?: Settings;
+}
+
+const Footer = ({ settings }: FooterProps) => {
   // A default settings object to prevent errors if the prop is not provided
   const defaultSettings = {
     description: "Trucking 360 is your dedicated partner for achieving Fantastic+ results in the Amazon Freight Partner (AFP) program.",
@@ -23,7 +27,7 @@ const Footer = ({ settings }) => {
     email: "Contact@trucking360solutions.com"
   };
 
-  const currentSettings = settings || defaultSettings;
+  const currentSettings = { ...defaultSettings, ...settings };
   const mapsQuery = encodeURIComponent(currentSettings.address);
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
 

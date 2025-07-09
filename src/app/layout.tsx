@@ -112,13 +112,7 @@ export default function RootLayout({
           <ClientInitializer>
             <Header />
             <main>{children}</main>
-            <Footer  settings={{
-              website_name: 'Trucking 360',
-              website_url: 'https://trucking360solutions.com',
-              website_email: 'info@trucking360solutions.com',
-              website_phone: '1-888-888-8888',
-              website_address: '1234 Main St, Anytown, USA 12345',
-            }} />
+            <Footer  />
             <NotificationOverlay />
           </ClientInitializer>
         </NotificationProvider>
