@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { LoadingProvider, useLoading } from '@/contexts/LoadingContext'
 import LoadingOverlay from './LoadingOverlay'
 
@@ -17,7 +19,7 @@ function LoadingWrapper({ children }: { children: React.ReactNode }) {
 
 function AOSInitializer() {
   useEffect(() => {
-    if (typeof window !== 'undefined' && typeof AOS !== 'undefined') {
+    if (typeof window !== 'undefined') {
       AOS.init({
         duration: 1000,
         offset: 120,

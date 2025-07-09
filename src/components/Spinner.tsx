@@ -6,7 +6,7 @@ interface SpinnerProps {
   show?: boolean
   className?: string
   size?: 'sm' | 'md' | 'lg'
-  color?: string
+  color?: 'primary' | 'secondary' | 'white'
 }
 
 const Spinner = ({ 
