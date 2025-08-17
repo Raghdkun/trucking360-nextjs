@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FaChevronDown } from 'react-icons/fa';
@@ -34,12 +34,12 @@ const PricingPageContent: React.FC = () => {
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
     // Default services for customizable plan calculation
-    const defaultServices = [
+    const defaultServices = useMemo(() => [
         { name: 'Dispatch', price: 75, id: 'Dispatch' },
         { name: 'Fleet', price: 20, id: 'Fleet' },
         { name: 'Hiring', price: 25, id: 'Hiring' },
         { name: 'HR', price: 25, id: 'HR' },
-    ];
+    ], []);
 
     // Effect to calculate the total price when checkboxes change
     useEffect(() => {

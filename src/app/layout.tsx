@@ -113,15 +113,16 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-poppins antialiased">
+    <body className="font-poppins antialiased">
         <GeneralDataProvider>
           <NotificationProvider>
-            <ClientInitializer />
-            <MatomoAnalytics />
-            <Header />
-            <main>{children}</main>
-            <Footer />
-            <NotificationOverlay />
+            <ClientInitializer>
+              <MatomoAnalytics />
+              <Header />
+              <main>{children}</main>
+              <Footer />
+              <NotificationOverlay />
+            </ClientInitializer>
           </NotificationProvider>
         </GeneralDataProvider>
       </body>
