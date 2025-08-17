@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import { ClientInitializer } from '@/components/ClientInitializer';
 import { MatomoAnalytics } from '@/components/MatomoAnalytics';
 import { NotificationProvider } from '@/contexts/NotificationContext';
+import { GeneralDataProvider } from '@/contexts/GeneralDataContext';
 import NotificationOverlay from '@/components/NotificationOverlay';
 import './globals.css';
 import './app.css'
@@ -94,30 +95,36 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" className={poppins.variable}>
       <head>
-        {/* Font Awesome CSS */}
         <Script
-          src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+          strategy="afterInteractive"
         />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+          `}
+        </Script>
       </head>
-      <body className='font-sans bg-white'>
-        <NotificationProvider>
-          <ClientInitializer>
+      <body className="font-poppins antialiased">
+        <GeneralDataProvider>
+          <NotificationProvider>
+            <ClientInitializer children={undefined} />
+            <MatomoAnalytics />
             <Header />
             <main>{children}</main>
-            <Footer  />
+            <Footer />
             <NotificationOverlay />
-          </ClientInitializer>
-        </NotificationProvider>
-        <MatomoAnalytics />
+          </NotificationProvider>
+        </GeneralDataProvider>
       </body>
     </html>
-  );
+  )
 }

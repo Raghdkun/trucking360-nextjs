@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 // Import icons from the react-icons library
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 
@@ -9,7 +9,7 @@ interface ContactSectionProps {
   address: string;
   phone: string;
   email: string;
-  cognitoWebhookUrl: string; // The webhook URL will be passed as a prop
+  cognitoWebhookUrl?: string; // Made optional since we're using Zoho form
 }
 
 type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
@@ -22,43 +22,26 @@ const ContactSection: React.FC<ContactSectionProps> = ({ address, phone, email, 
   
   // State to manage the form submission process
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>('idle');
+  const formRef = useRef<HTMLFormElement>(null);
 
-  // Async function to handle form submission
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Prevent the default form submission (page reload)
+  // Function to handle form submission without redirect
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setSubmissionStatus('submitting');
 
-    const formData = {
-      Name: name,
-      Email: emailInput,
-      Message: message,
-    };
-
-    try {
-      const response = await fetch(cognitoWebhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmissionStatus('success');
-        // Clear the form on success
-        setName('');
-        setEmailInput('');
-        setMessage('');
-      } else {
-        // Handle server-side validation errors or other issues
-        setSubmissionStatus('error');
-      }
-    } catch (error) {
-      // Handle network errors
-      console.error('Submission error:', error);
-      setSubmissionStatus('error');
+    // Submit the form to hidden iframe
+    if (formRef.current) {
+      formRef.current.submit();
     }
+
+    // Show success message after a short delay
+    setTimeout(() => {
+      setSubmissionStatus('success');
+      // Clear the form on success
+      setName('');
+      setEmailInput('');
+      setMessage('');
+    }, 2000);
   };
 
   return (
@@ -87,35 +70,129 @@ const ContactSection: React.FC<ContactSectionProps> = ({ address, phone, email, 
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Contact Form - Zoho Form Submission without redirect */}
             <div className="md:w-1/2 p-8" data-aos="fade-left" data-aos-delay="400">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                  <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" required />
+              <div className="zf-templateWrapper">
+                <div className="zf-tempHeadBdr mb-6">
+                  <div className="zf-tempHeadContBdr">
+                    <h2 className="zf-frmTitle text-2xl font-semibold text-gray-800 mb-2">
+                      {/* <em>Contact Us</em> */}
+                    </h2>
+                    <div className="zf-clearBoth"></div>
+                  </div>
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input type="email" id="email" name="email" value={emailInput} onChange={(e) => setEmailInput(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" required />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                  <textarea id="message" name="message" rows={4} value={message} onChange={(e) => setMessage(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" required></textarea>
-                </div>
-                <div>
-                  <button type="submit" disabled={submissionStatus === 'submitting'} className="w-full bg-secondary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed">
-                    {submissionStatus === 'submitting' ? 'Sending...' : 'Send Message'}
-                  </button>
-                </div>
+                
+                {/* Hidden iframe to prevent redirect */}
+                <iframe 
+                  name="hidden_iframe" 
+                  style={{ display: 'none' }}
+                  title="Hidden iframe for form submission"
+                ></iframe>
+                
+                {/* Form submission to Zoho via hidden iframe */}
+                <form 
+                  ref={formRef}
+                  action="https://forms.zohopublic.com/t360portal1/form/ContactUs/formperma/oyLkZv0FG2-qL070REyHnMc1ydI-DQX0ZBgAoOufeiA/htmlRecords/submit"
+                  method="POST"
+                  acceptCharset="UTF-8"
+                  encType="multipart/form-data"
+                  target="hidden_iframe"
+                  onSubmit={handleSubmit}
+                  className="zf-subContWrap zf-topAlign"
+                >
+                  {/* Hidden fields required by Zoho */}
+                  <input type="hidden" name="zf_referrer_name" value="" />
+                  <input type="hidden" name="zf_redirect_url" value="" />
+                  <input type="hidden" name="zc_gad" value="" />
+                  
+                  <div className="space-y-4">
+                    {/* Name Field */}
+                    <div className="zf-tempFrmWrapper zf-large">
+                      <label className="zf-labelName block text-sm font-medium text-gray-700 mb-1">
+                        Name
+                        <em className="zf-important text-red-500"> *</em>
+                      </label>
+                      <div className="zf-tempContDiv">
+                        <span>
+                          <input 
+                            type="text" 
+                            name="SingleLine" 
+                            value={name} 
+                            onChange={(e) => setName(e.target.value)} 
+                            maxLength={255} 
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" 
+                            required 
+                          />
+                        </span>
+                      </div>
+                      <div className="zf-clearBoth"></div>
+                    </div>
 
-                {/* User Feedback Messages */}
-                {submissionStatus === 'success' && (
-                  <p className="text-green-600 text-center font-semibold">Thank you! Your message has been sent successfully.</p>
-                )}
-                {submissionStatus === 'error' && (
-                  <p className="text-red-600 text-center font-semibold">Something went wrong. Please try again later.</p>
-                )}
-              </form>
+                    {/* Email Field */}
+                    <div className="zf-tempFrmWrapper zf-large">
+                      <label className="zf-labelName block text-sm font-medium text-gray-700 mb-1">
+                        Email
+                        <em className="zf-important text-red-500"> *</em>
+                      </label>
+                      <div className="zf-tempContDiv">
+                        <span>
+                          <input 
+                            type="email" 
+                            name="Email" 
+                            value={emailInput} 
+                            onChange={(e) => setEmailInput(e.target.value)} 
+                            maxLength={255} 
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" 
+                            required 
+                          />
+                        </span>
+                      </div>
+                      <div className="zf-clearBoth"></div>
+                    </div>
+
+                    {/* Message Field */}
+                    <div className="zf-tempFrmWrapper zf-large">
+                      <label className="zf-labelName block text-sm font-medium text-gray-700 mb-1">
+                        Message
+                        <em className="zf-important text-red-500"> *</em>
+                      </label>
+                      <div className="zf-tempContDiv">
+                        <span>
+                          <textarea 
+                            name="MultiLine" 
+                            rows={4} 
+                            value={message} 
+                            onChange={(e) => setMessage(e.target.value)} 
+                            maxLength={65535} 
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" 
+                            required
+                          ></textarea>
+                        </span>
+                      </div>
+                      <div className="zf-clearBoth"></div>
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="zf-fmFooter mt-6">
+                    <button 
+                      type="submit" 
+                      disabled={submissionStatus === 'submitting'}
+                      className="zf-submitColor w-full bg-secondary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    >
+                      {submissionStatus === 'submitting' ? 'Sending...' : 'Submit'}
+                    </button>
+                  </div>
+
+                  {/* User Feedback Messages */}
+                  {submissionStatus === 'success' && (
+                    <p className="text-green-600 text-center font-semibold mt-4">Thank you! Your message has been sent successfully.</p>
+                  )}
+                  {submissionStatus === 'error' && (
+                    <p className="text-red-600 text-center font-semibold mt-4">Something went wrong. Please try again later.</p>
+                  )}
+                </form>
+              </div>
             </div>
           </div>
         </div>

@@ -1,35 +1,52 @@
 'use client'
 import React from 'react'
+import { useHomepage } from '@/contexts/HomepageContext'
+import { getVideoUrl } from '@/config/constants'
 
 const SuccessStory = () => {
-  return (
-    <section className=" mx-auto px-6 py-16 md:py-24 lg:px-8 bg-gray-100">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+  const { homepageData, loading } = useHomepage();
 
-        {/* Video Section */}
+  if (loading) {
+    return (
+      <section className="mx-auto px-6 py-16 md:py-24 lg:px-8 bg-gray-100">
+        <div className="text-center">Loading video section...</div>
+      </section>
+    );
+  }
+
+  const videoData = homepageData?.video;
+  const videoUrl = videoData?.video ? getVideoUrl(videoData.video) : '/videos/success-story.mp4';
+  const title = videoData?.title || 'Hear directly from our partners and their drivers:';
+  const description = videoData?.description || 'Go beyond the numbers and listen to real stories from the people who experience our services firsthand.';
+
+  return (
+    <section className="mx-auto px-6 py-16 md:py-24 lg:px-8 bg-gray-100">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="relative aspect-video bg-black rounded-xl overflow-hidden shadow-xl" data-aos="fade-in"
           data-aos-duration="800" data-aos-delay="200">
           <video
             className="w-full h-auto"
             controls
-          // poster="/images/video-thumbnail.jpg"
           >
-            <source src="/videos/success-story.mp4" type="video/mp4" />
+            <source src={videoUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
 
-        {/* Content Section */}
         <div className="space-y-8 md:pl-8" data-aos="fade-in" data-aos-duration="800">
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight" data-aos="fade-in"
               data-aos-delay="400" data-aos-duration="500">
-              <span className="text-primary">Hear directly from our partners and their drivers:</span>
+              <span className="text-primary">{title}</span>
             </h2>
 
-            <p className="text-lg text-gray-700 leading-relaxed" data-aos="fade-in" data-aos-delay="500" data-aos-duration="500">
-              Go beyond the numbers and listen to real stories from the people who experience our services firsthand. Our partners and their drivers share their thoughts, experiences, and the impact our services have had on their business and daily operations.
-            </p>
+            <div 
+              className="text-lg text-gray-700 leading-relaxed" 
+              data-aos="fade-in" 
+              data-aos-delay="500" 
+              data-aos-duration="500"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
 
             <div className="flex items-center gap-2 text-sm text-gray-600 mt-4" data-aos="fade-in" data-aos-delay="600" data-aos-duration="500">
               <div className="flex items-center justify-center w-5 h-5 rounded-full bg-primary">
@@ -41,7 +58,6 @@ const SuccessStory = () => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   )

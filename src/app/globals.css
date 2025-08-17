@@ -785,3 +785,81 @@ html {
             margin-top: 10rem; /* Further increase for large screens */
           }
         }
+
+/* Newsletter specific styles */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Prose styling for article content */
+.prose {
+  color: #374151;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  color: #2e368f;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+.prose h2 {
+  font-size: 1.875rem;
+  line-height: 1.3;
+}
+
+.prose h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+.prose p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.prose strong {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.prose em {
+  font-style: italic;
+  color: #4b5563;
+}
+
+.prose a {
+  color: #2e368f;
+  text-decoration: underline;
+}
+
+.prose a:hover {
+  color: #e93232;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose blockquote {
+  border-left: 4px solid #2e368f;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #4b5563;
+}
+
+/* ... existing code ... */

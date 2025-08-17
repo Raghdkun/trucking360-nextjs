@@ -1,0 +1,42 @@
+/* Custom styles for newsletter pages */
+.newsletter-container {
+  background-color: #f3f4f6 !important;
+  min-height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 12rem !important;
+}
+
+.newsletter-loading,
+.newsletter-error,
+.newsletter-empty {
+  background-color: #f3f4f6 !important;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+  padding-bottom: 12rem !important;
+}
+
+.newsletter-main {
+  padding-bottom: 4rem;
+}
+
+/* Ensure the body background matches */
+body {
+  background-color: #f3f4f6;
+}
+
+/* Override any white backgrounds in the newsletter section */
+.newsletter-container * {
+  background-color: inherit;
+}
+
+.newsletter-container .bg-gray-100 {
+  background-color: #f3f4f6 !important;
+}
+
+/* Ensure footer spacing */
+body:has(.newsletter-container) footer {
+  margin-top: 0 !important;
+}

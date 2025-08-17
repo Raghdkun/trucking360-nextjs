@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useHomepage } from '@/contexts/HomepageContext';
+import { getImageUrl } from '@/config/constants';
 
 // Core Swiper imports
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,36 +15,6 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-// Data for the slides - this makes the component cleaner and easier to update
-const slideData = [
-  {
-    imgSrc: '/images/1.jpg',
-    imgAlt: 'Dashboard Analytics',
-    title: 'One Dashboard',
-    description: 'No more wasting hours jumping between portals. Get one centralized command center that simplifies, sharpens, and accelerates your operations.',
-    features: [
-      'Daily performance metrics updated automatically',
-      'Visual representation of key performance indicators',
-    ],
-  },
-  {
-    imgSrc: '/images/2.jpg',
-    imgAlt: 'Performance Tracking',
-    title: 'What Makes it Unstoppable',
-    description: '', // No description for this slide in the original code
-    features: [
-      'All-in-One Access',
-      'Real-Time + Daily Updates',
-      'Data-Driven Coaching, Automated',
-      'Tactical & Strategic Insights',
-      'Multi-User, Role-Based Access',
-      'Top & Bottom Performer Highlight',
-      'One-Click Report',
-    ],
-  },
-  // The third slide was commented out in the original HTML, but can be added here if needed
-];
-
 // Reusable Checkmark Icon component for lists
 const CheckmarkIcon = () => (
   <div className="flex-shrink-0 w-4 h-4 rounded-full bg-green-500 flex items-center justify-center mt-1 mr-4">
@@ -53,6 +25,7 @@ const CheckmarkIcon = () => (
 );
 
 const DashboardSlider: React.FC = () => {
+  const { homepageData, loading } = useHomepage();
   // State for controlling the image modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageSrc, setModalImageSrc] = useState('');
@@ -68,6 +41,60 @@ const DashboardSlider: React.FC = () => {
     setModalImageSrc('');
     document.body.style.overflow = 'auto'; // Restore background scrolling
   };
+
+  if (loading) {
+    return (
+      <section id="dashboard-slide" className="py-16 bg-gray-100">
+        <div className="container mx-auto px-6 text-center">
+          <div>Loading dashboard slides...</div>
+        </div>
+      </section>
+    );
+  }
+
+  // Get sliders from API data, fallback to empty array
+  const sliders = homepageData?.sliders || [];
+  const sortedSliders = [...sliders].sort((a, b) => a.order - b.order);
+
+  // Transform API data to match component structure
+  const slideData = sortedSliders.map(slider => ({
+    imgSrc: slider.image ? getImageUrl(slider.image.trim()) : '/images/1.jpg',
+    imgAlt: slider.title || 'Dashboard Image',
+    title: slider.title || '',
+    description: slider.description || '',
+    features: slider.features ? slider.features.split('\r\n').filter((feature: string) => feature.trim()) : [],
+  }));
+
+  // If no sliders from API, use fallback data
+  const fallbackSlideData = [
+    {
+      imgSrc: '/images/1.jpg',
+      imgAlt: 'Dashboard Analytics',
+      title: 'One Dashboard',
+      description: 'No more wasting hours jumping between portals. Get one centralized command center that simplifies, sharpens, and accelerates your operations.',
+      features: [
+        'Daily performance metrics updated automatically',
+        'Visual representation of key performance indicators',
+      ],
+    },
+    {
+      imgSrc: '/images/2.jpg',
+      imgAlt: 'Performance Tracking',
+      title: 'What Makes it Unstoppable',
+      description: '',
+      features: [
+        'All-in-One Access',
+        'Real-Time + Daily Updates',
+        'Data-Driven Coaching, Automated',
+        'Tactical & Strategic Insights',
+        'Multi-User, Role-Based Access',
+        'Top & Bottom Performer Highlight',
+        'One-Click Report',
+      ],
+    },
+  ];
+
+  const finalSlideData = slideData.length > 0 ? slideData : fallbackSlideData;
 
   return (
     <>
@@ -127,7 +154,7 @@ const DashboardSlider: React.FC = () => {
               }}
               className="dashboardSwiper"
             >
-              {slideData.map((slide, index) => (
+              {finalSlideData.map((slide, index) => (
                 <SwiperSlide key={index}>
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div
@@ -145,10 +172,13 @@ const DashboardSlider: React.FC = () => {
                     <div className="dashboard-content p-4">
                       <h3 className="text-2xl font-bold text-primary mb-4">{slide.title}</h3>
                       {slide.description && (
-                        <p className="text-gray-700 mb-6">{slide.description}</p>
+                        <div 
+                          className="text-gray-700 mb-6"
+                          dangerouslySetInnerHTML={{ __html: slide.description }}
+                        />
                       )}
                       <ul className="space-y-3">
-                        {slide.features.map((feature, fIndex) => (
+                        {slide.features.map((feature: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined, fIndex: React.Key | null | undefined) => (
                           <li key={fIndex} className="flex items-start">
                             <CheckmarkIcon />
                             <span className="text-sm">{feature}</span>

@@ -1,0 +1,506 @@
+{
+    "success": true,
+    "data": {
+        "plans": [
+            {
+                "id": 2,
+                "name": "Dashboard 360",
+                "description": "<p>Complete visibility into your business with real-time analytics and reporting.</p>",
+                "features": "Real-time performance tracking\nCustomizable reporting tools\nDriver performance metrics",
+                "is_customizable": false,
+                "is_best_value": false,
+                "order": 1,
+                "button_link": "https://trucking360solutions.com/form",
+                "button_text": "Get Dashboard360",
+                "highlighted_text": "<p>Get 50% OFF when combined with any other service!</p>",
+                "button_bg_color": "#2E368F",
+                "total_value_bg_color": "#2E368F",
+                "total_value": "199.00",
+                "per_text": "Month",
+                "custom_features": []
+            },
+            {
+                "id": 3,
+                "name": "Customizable Plan",
+                "description": "<p>Build your own plan by selecting or unselecting the services below to perfectly match your business needs.</p>",
+                "features": null,
+                "is_customizable": true,
+                "is_best_value": false,
+                "order": 0,
+                "button_link": "https://trucking360solutions.com/form",
+                "button_text": "Get Started",
+                "highlighted_text": null,
+                "button_bg_color": "#2E368F",
+                "total_value_bg_color": "#2E368F",
+                "total_value": null,
+                "per_text": "accepted contract",
+                "custom_features": []
+            },
+            {
+                "id": 4,
+                "name": "Fantastic+ Bundle",
+                "description": "<p>Save <strong>$80 monthly</strong> and <strong>$4,160 annually Per accepted contract</strong> by choosing the F+ Bundle plan.</p>",
+                "features": "Dispatch\nFleet\nHiring\nHR",
+                "is_customizable": false,
+                "is_best_value": true,
+                "order": 2,
+                "button_link": "https://trucking360solutions.com/form",
+                "button_text": "Get Started",
+                "highlighted_text": null,
+                "button_bg_color": "#3B82F6",
+                "total_value_bg_color": "#F3F4F6",
+                "total_value": "125.00",
+                "per_text": "accepted contract",
+                "custom_features": []
+            }
+        ],
+        "tables": [
+            {
+                "id": 1,
+                "title": "Dispatching Services",
+                "contents": [
+                    {
+                        "id": 1,
+                        "service_name": "Talk & Text Availability 24/7",
+                        "description": "<p>Ensures dedicated support availability to your drivers around the clock via prompt responses to calls and messages.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 2,
+                        "service_name": "24/7 On Road Monitoring",
+                        "description": "<p>Ensures drivers are monitored around the clock with real-time updates for safe and seamless operations.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 3,
+                        "service_name": "Hours of Service Compliance Management",
+                        "description": "<p>Comprehensive monitoring and support for drivers, ensuring compliance with HOS regulations by tracking hours, optimizing scheduling, reconciling exceptions like shift time, adverse conditions, Yard Move, and Personal Conveyance allowances.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 4,
+                        "service_name": "Performance Disputes",
+                        "description": "<p>Handles performance disputes impacting the AFP's Operational Score, preventing negative effects from Amazon-controllable factors.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 5,
+                        "service_name": "Reconcile Unassigned Drive Time",
+                        "description": "<p>Reconciles unassigned drive time to maintain compliance with Amazon policy and FMCSA regulations ensuring accurate records at all times.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 6,
+                        "service_name": "Daily & Weekly Reporting",
+                        "description": "<p>Delivers detailed reports on Acceptance, On-Time Performance, and Operational Excellence Scores on a daily and weekly cadence to stay up to date with your company’s KPI’s.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 7,
+                        "service_name": "Driver Safety Checks",
+                        "description": "<p>Requires drivers to report key updates to ensure timely assistance, conflict resolution and reassurance of safe driving practices.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 8,
+                        "service_name": "Schedule Reminders",
+                        "description": "<p>Provides timely schedule reminders to drivers, helping them stay on track and proactively address potential operational challenges before the scheduled departure time.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 9,
+                        "service_name": "ROC Communication",
+                        "description": "<p>Handles ROC communications, including case creation and conflict resolution, for seamless workflow allowing for drivers to focus more on driving.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 10,
+                        "service_name": "Relay Load Notes",
+                        "description": "<p>Maintains detailed load notes to safeguard AFPs' scores and operational performance so key stakeholders are informed of what transpired during the respective tour.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 11,
+                        "service_name": "Tracking Comdata Cards and Purchases",
+                        "description": "<p>Actively manages Comdata cards, resolves issues, and ensures secure transactions.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 12,
+                        "service_name": "Accident / Incident Investigation & Reporting",
+                        "description": "<p>Manages accident and incident processes, ensuring thorough documentation and resolution from start to finish.</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 13,
+                        "service_name": "Netradyne Reports",
+                        "description": "<p>Monitors Netradyne reports and provides real-time updates on driver behavior.</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 14,
+                        "service_name": "Real Time Safety Coachings (Netradyne and/or Organic)",
+                        "description": "<p>Delivers driver coaching through Netradyne and other channels to improve safety scores and awareness (Netradyne is optional).</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 15,
+                        "service_name": "Safety Campaigns",
+                        "description": "<p>Creates engaging campaigns that promote driver safety using impactful tools and methods on a consistent cadence.</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 16,
+                        "service_name": "Smith System Training Coordination & Selection",
+                        "description": "<p>Coordinates Smith System training for selected drivers and tracks their progress post-completion.</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 17,
+                        "service_name": "Weather Monitoring",
+                        "description": "<p>Monitors weather conditions along the path of a driver’s tour and adjusts plans strategically to prioritize driver safety.</p>",
+                        "is_safety": true
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "Fleet Services",
+                "contents": [
+                    {
+                        "id": 18,
+                        "service_name": "Annual Inspections Tracking",
+                        "description": "<p>Ensures trucks' annual inspections are tracked and kept current to meet DOT requirements by identifying inspections nearing expiration, coordinating with on-site maintenance vendors and providing updated documentation.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 19,
+                        "service_name": "Repair Orders' Invoice Tracking",
+                        "description": "<p>Tracks all repair orders for tractors, including dates, vendors, and costs, providing a comprehensive record of fleet-related expenses.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 20,
+                        "service_name": "Maintenance Allowance Tracking",
+                        "description": "<p>Monitors maintenance allowance and compares it with report data to identify and prevent unnecessary expenditures.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 21,
+                        "service_name": "Partner-Managed Repairs Reimbursement Tracking",
+                        "description": "<p>Issues reimbursement documentation for partner-managed repairs and tracks payments until completion, ensuring accuracy and accountability.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 22,
+                        "service_name": "Partner-Managed Repairs Archive",
+                        "description": "<p>Maintains an archive of partner-managed repair reimbursements, providing a detailed history of received amounts and timelines.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 23,
+                        "service_name": "Work Order Creation & Tracking",
+                        "description": "<p>Oversees the creation, tracking, and closure of work orders while ensuring units return to active status promptly for maximum tractor uptime.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 24,
+                        "service_name": "Escalations",
+                        "description": "<p>Handles escalations for unresolved issues through proper channels, ensuring swift and effective resolutions.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 25,
+                        "service_name": "Mechanical Tractor Disputes",
+                        "description": "<p>Manages disputes related to mechanical tractor issues that are not carrier-controllable to ensure the highest operational excellence score is achieved.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 26,
+                        "service_name": "24/7 On-Site Maintenance Vendor Communication",
+                        "description": "<p>Provides 24/7 availability for on-site maintenance vendor communications, ensuring timely responses and repairs.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 27,
+                        "service_name": "DSS Communication 24/7",
+                        "description": "<p>Offers around-the-clock support for DSS communications to address inquiries and concerns promptly.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 28,
+                        "service_name": "Driver Damage Report",
+                        "description": "<p>Tracks driver-related incidents, accidents, false reports, and damages, delivering actionable data for fleet management and accountability.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 29,
+                        "service_name": "Defects Data Archive",
+                        "description": "<p>Maintains and organizes truck defect records, providing AFPs with accurate, up-to-date information to support informed decisions, streamline maintenance, and ensure compliance.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 30,
+                        "service_name": "Tractor Health Report",
+                        "description": "<p>Provides comprehensive updates on tractor health, including defect causes, repair timelines, and ongoing maintenance needs.</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 31,
+                        "service_name": "Tractor Care & Handling Training",
+                        "description": "<p>Develops and shares training content to educate drivers on proper tractor care, handling and maintenance for optimal performance and overall fleet health.</p>",
+                        "is_safety": true
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "title": "Hiring Services",
+                "contents": [
+                    {
+                        "id": 32,
+                        "service_name": "Job Postings & Advertising",
+                        "description": "<p>Creates and manages job postings and advertising campaigns to attract the right talent from various platforms.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 33,
+                        "service_name": "Fountain Management",
+                        "description": "<p>Oversees the management of Fountain to optimize hiring workflows, organization and candidate experience.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 34,
+                        "service_name": "One-Way Interviews",
+                        "description": "<p>Facilitates one-way virtual interviews to streamline the candidate screening process.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 35,
+                        "service_name": "Phone Screening",
+                        "description": "<p>Performs phone screenings to evaluate candidate qualifications and fit for the role.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 36,
+                        "service_name": "Expiring Driver Document Tracking",
+                        "description": "<p>Monitors and tracks expiring driver documents to ensure timely renewal and compliance.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 37,
+                        "service_name": "JJ Keller Support & Assistance",
+                        "description": "<p>Provides support and coordination with JJ Keller for compliance and driver management solutions.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 38,
+                        "service_name": "CDL & Finishing School Programs",
+                        "description": "<p>Manages the partnership for CDL and finishing school programs to build a qualified driver pipeline and ensure reimbursement.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 39,
+                        "service_name": "Maintain Healthy Pipeline",
+                        "description": "<p>Implements strategies to maintain a robust pipeline of qualified candidates to ensure staffing is never an issue.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 40,
+                        "service_name": "EEO Guidelines & Best Practices",
+                        "description": "<p>Ensures adherence to Equal Employment Opportunity guidelines and best practices in recruitment and hiring.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 41,
+                        "service_name": "MVR Review",
+                        "description": "<p>Reviews Motor Vehicle Reports (MVR) to ensure compliance with safety and qualification standards, tailored to the AFPs desires.</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 42,
+                        "service_name": "SPHRR Review",
+                        "description": "<p>Conducts Safety Performance History Record Request reviews to identify and address potential hiring risks.</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 43,
+                        "service_name": "Drug Test Follow-Up",
+                        "description": "<p>Coordinates and tracks drug test follow-ups to meet regulatory and company requirements.</p>",
+                        "is_safety": true
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "title": "HR Services",
+                "contents": [
+                    {
+                        "id": 44,
+                        "service_name": "Scheduling Assistance",
+                        "description": "<p>Offers tailored scheduling support to assign trips efficiently while meeting Hours of Service requirements, minimizing downtime and maintaining on-time performance.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 45,
+                        "service_name": "Payroll Administration",
+                        "description": "<p>Handles payroll administration by tracking hours worked through Relay and ADP, ensuring drivers are paid accurately and on time, streamlining processes and reducing errors.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 46,
+                        "service_name": "Virtual Orientation",
+                        "description": "<p>Provides a comprehensive onboarding experience covering company policies, safety protocols, and operational procedures to prepare drivers for success in a remote, professional format.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 47,
+                        "service_name": "Intermodal Training",
+                        "description": "<p>Provides specialized training programs for intermodal operations to enhance driver skills and performance of transporting intermodal containers.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 48,
+                        "service_name": "Driver Scorecards (Daily, Weekly, Monthly)",
+                        "description": "<p>Generates detailed driver performance scorecards to track and enhance operational metrics at a micro and macro level.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 49,
+                        "service_name": "Driver Integration",
+                        "description": "<p>Manages the setup of driver profiles in platforms such as Relay, ADP, UIIA, and Netradyne, ensuring accurate data tracking and compliance.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 50,
+                        "service_name": "Health Benefits Tracking",
+                        "description": "<p>Administers and monitors health benefit enrollments, updates, and expirations, ensuring uninterrupted access and regulatory compliance.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 51,
+                        "service_name": "Insurance Reviews",
+                        "description": "<p>Conducts thorough reviews of insurance policies to ensure optimal coverage and compliance, at the best premium price.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 52,
+                        "service_name": "CAPs (Optional)",
+                        "description": "<p>Develops tailored Corrective Action Plans with clear actions, deadlines, and follow-ups to support performance improvement and accountability among drivers.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 53,
+                        "service_name": "Just-Cause Terminations",
+                        "description": "<p>Facilitates just-cause terminations in compliance with legal and organizational standards, approved by the AFP Business Owner.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 54,
+                        "service_name": "Employee File Tracking & Documentation",
+                        "description": "<p>Maintains accurate and organized employee files and documentation for compliance and operational efficiency.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 55,
+                        "service_name": "Employee Engagement Program",
+                        "description": "<p>Develops initiatives to boost employee engagement, morale, and retention through strategic programming.</p>",
+                        "is_safety": false
+                    },
+                    {
+                        "id": 56,
+                        "service_name": "Workplace Injury Tracking & Mitigation",
+                        "description": "<p>Tracks workplace injuries, identifies trends, addresses root causes, and develops mitigation strategies, including OSHA reporting to ensure safety and compliance.</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 57,
+                        "service_name": "Netradyne Feedback (Safety Disputes)",
+                        "description": "<p>Handles safety feedback and disputes through Netradyne, ensuring fairness and compliance.</p>",
+                        "is_safety": true
+                    },
+                    {
+                        "id": 58,
+                        "service_name": "Safety Competitions",
+                        "description": "<p>Organizes safety competitions to promote healthy competition, best practices and driver engagement in safety protocols.</p>",
+                        "is_safety": true
+                    }
+                ]
+            }
+        ],
+        "faqs": [
+            {
+                "id": 6,
+                "title": "How does the Per Accepted Contract pricing work?",
+                "description": "We keep billing straightforward and aligned with your usage. Each week, you're only billed for the contracts you accept. For example, if you have 17 contracted tractors but only accept 15 contracts, you'll only be billed for those 15. If you're using our dispatching service at $75 per contract, your weekly bill would be 15 x $75 = $1,125. For those on our Fantastic+ bundle, covering dispatch, hiring, HR, and fleet services, the rate is $125 per contract, so you'd pay 15 x $125 = $1,875. Our goal is to make billing transparent and flexible, matching your operational pace.",
+                "order": 0
+            },
+            {
+                "id": 7,
+                "title": "Why is Per Accepted Contract pricing beneficial to me?",
+                "description": "Our per-accepted contract pricing provides flexibility and savings, ensuring you only pay for active operations. Unlike flat-rate models that charge regardless of tractor status, our approach aligns costs with your actual usage—no unnecessary charges if a tractor is down. This way, you maximize value, paying only for what's actively moving your business forward.",
+                "order": 1
+            },
+            {
+                "id": 8,
+                "title": "How will I be billed?",
+                "description": "Clients are billed the Monday following the acceptance of their upcoming contracts, which are released and approved each Friday. Once contracts are finalized, Trucking 360 strategically plans dedicated staffing to meet your business needs. Billing is processed through our secure payment portal, offering two convenient options: automatic ACH debits from your account on file or credit card payments, based on your preference. You will receive a detailed invoice outlining the charges, along with a receipt once the payment has been successfully processed.",
+                "order": 2
+            },
+            {
+                "id": 9,
+                "title": "Will my pricing change if I add more tractors?",
+                "description": "The rate per accepted contract stays consistent, so you know what to expect! However, accepting more contracts will increase the total amount billed, based on how many contracts you accept that week. For instance, if you accepted 14 contracts at our dispatching rate of $75, your bill would be 14 x $75 = $1,050. With 15 contracts, it would be 15 x $75 = $1,125. For Fantastic+ bundle users at $125 per accepted contract, the bill would be 14 x $125 = $1,750, and for 15 accepted contracts, 15 x $125 = $1,875. This predictable per-unit pricing scales with your operations while keeping costs transparent.",
+                "order": 3
+            },
+            {
+                "id": 10,
+                "title": "Will I pay for a rejected contract?",
+                "description": "No, we only bill for contracts you accept. If a contract is rejected, there's no charge, regardless of whether you're on our Fantastic+ bundle or just the dispatching service. Our commitment is to ensure billing reflects the work accepted, so you can focus on what counts.",
+                "order": 4
+            },
+            {
+                "id": 11,
+                "title": "Why is it beneficial to bill per accepted contract for hiring, fleet, HR, and other services?",
+                "description": "Our service billing is tied to your accepted contract count to adapt to your operational needs. If you're running fewer contracts, you won't pay a flat fee for services like hiring, HR, and fleet management. Instead, your costs decrease with usage, ensuring fair pricing without locking you into fixed rates. It's a flexible model designed to optimize your expenses as your operations fluctuate.",
+                "order": 5
+            },
+            {
+                "id": 12,
+                "title": "Why do you bill weekly?",
+                "description": "Weekly billing is designed to stay in sync with your business. By billing per accepted contract each week, we offer precise billing that reflects any changes in your accepted contracts. This way, you're always paying accurately for what you actually use, supporting a flexible and transparent billing cycle.",
+                "order": 6
+            },
+            {
+                "id": 13,
+                "title": "Are there any hidden fees or setup costs?",
+                "description": "Not at all—our pricing is completely transparent. You're billed based solely on the accepted contracts each week, with no hidden fees or setup costs. We want you to feel confident in exactly what you're paying for.",
+                "order": 7
+            },
+            {
+                "id": 14,
+                "title": "Am I locked into a contract?",
+                "description": "No, you have complete flexibility. You can cancel at any time with just a one-week notice, giving you full control over your service commitments. We're here to support you as your needs evolve.",
+                "order": 8
+            },
+            {
+                "id": 15,
+                "title": "How does billing work if a tractor breaks down during the week?",
+                "description": "If your tractor experiences a breakdown during an accepted contract, rest assured that you'll still be billed solely for the accepted contract amount, without any extra charges. Should you choose to continue the contract with a Permaloaner or a different tractor from your fleet, there's no need to worry—our goal is to ensure your operations can carry on smoothly without unexpected costs. We're here to support you through any challenges!",
+                "order": 9
+            },
+            {
+                "id": 16,
+                "title": "How do you track the daily Operational Excellence Score?",
+                "description": "We have proprietary technology that will enable us to provide you with a daily Operational Excellence Score that will take into account previous day acceptance and on-time metrics.",
+                "order": 10
+            }
+        ],
+        "booking": {
+            "title": "Book a Demo",
+            "description": "Let’s talk pricing, features, and next steps.",
+            "btn_name": "Book Now",
+            "btn_link": "#"
+        }
+    }
+}

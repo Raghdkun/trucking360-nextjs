@@ -1,10 +1,12 @@
 import { MetadataRoute } from 'next'
+import { apiService } from '@/services/apiService'
+import { API_CONFIG, NewsletterApiResponse } from '@/config/constants'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://trucking360solutions.com' // Replace with your actual domain
   
-  // Define all your pages with their metadata
-  const routes = [
+  // Define all your static pages with their metadata
+  const staticRoutes = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -41,14 +43,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
+    // Newsletter main page
     {
-      url: `${baseUrl}/faqs`,
+      url: `${baseUrl}/newsletter`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
     },
     // Note: Excluding /comingsoon as it's likely a placeholder page
   ]
 
-  return routes
+  // Fetch newsletter articles dynamically
+  let newsletterRoutes: MetadataRoute.Sitemap = []
+  
+  try {
+    const response = await apiService.get<NewsletterApiResponse>(API_CONFIG.ENDPOINTS.NEWSLETTER)
+    
+    if (response.data && response.data.success && response.data.data.articles) {
+      newsletterRoutes = response.data.data.articles.map(article => ({
+        url: `${baseUrl}/newsletter/${article.id}`,
+        lastModified: new Date(article.custom_date),
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+      }))
+    }
+  } catch (error) {
+    console.error('Error fetching newsletter data for sitemap:', error)
+    // If newsletter fetch fails, continue with static routes only
+  }
+
+  // Combine static routes with dynamic newsletter routes
+  return [...staticRoutes, ...newsletterRoutes]
 }

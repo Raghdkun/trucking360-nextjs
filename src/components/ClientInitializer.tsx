@@ -10,12 +10,18 @@ function GlobalSpinner() {
   return (
     <div
       id="globalSpinner"
-      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[9999]"
+      className="fixed inset-0 flex justify-center items-center z-[9999]"
     >
-      <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-white border-t-transparent"></div>
+      <div className="relative">
+        {/* Outer ring */}
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-blue-500 shadow-lg"></div>
+        {/* Inner ring for double effect */}
+        <div className="absolute top-2 left-2 h-8 w-8 animate-spin rounded-full border-2 border-gray-100 border-t-blue-400" style={{animationDirection: 'reverse', animationDuration: '0.8s'}}></div>
+      </div>
     </div>
   );
 }
+
 
 export function ClientInitializer({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
