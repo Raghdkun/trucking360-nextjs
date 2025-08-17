@@ -107,12 +107,12 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a
+                <Link
                   href="/newsletter"
                   className="hover:text-secondary transition-colors duration-300 cursor-pointer"
                 >
                   Newsletter
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

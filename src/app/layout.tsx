@@ -116,7 +116,7 @@ export default function RootLayout({
       <body className="font-poppins antialiased">
         <GeneralDataProvider>
           <NotificationProvider>
-            <ClientInitializer children={undefined} />
+            <ClientInitializer />
             <MatomoAnalytics />
             <Header />
             <main>{children}</main>

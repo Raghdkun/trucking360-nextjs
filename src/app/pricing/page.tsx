@@ -50,7 +50,7 @@ const PricingPageContent: React.FC = () => {
             return acc;
         }, 0);
         setTotalPrice(total);
-    }, [selectedServices]);
+    }, [selectedServices, defaultServices]);
 
     const handleCheckboxChange = (serviceId: string) => {
         setSelectedServices(prev => ({
