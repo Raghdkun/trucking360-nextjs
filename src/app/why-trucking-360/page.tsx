@@ -1,6 +1,9 @@
 "use client"
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { WhyTrucking360Provider, useWhyTrucking360 } from '@/contexts/WhyTrucking360Context';
+import { getImageUrl } from '@/config/constants';
+import LoadingOverlay from '@/components/LoadingOverlay';
 
 // Replace with your actual image path or import
 const leadershipImage = '/images/nickpic.jpg';
@@ -19,7 +22,7 @@ const corePrinciples = [
     title: 'Employee Obsession',
     content: (
       <>
-        We are dedicated to engaging and empowering our customers’ employees, recognizing that they are the backbone of success in every operation. Through tailored safety campaigns, we prioritize the well-being of drivers and staff, equipping them with the knowledge and tools to maintain high safety standards. Our engagement initiatives are designed to boost morale, encourage professional growth, and foster a sense of belonging within the team. By creating a productive and supportive work environment, we help drive success, ensuring employees feel valued, motivated, and aligned with their company’s goals.
+        We are dedicated to engaging and empowering our customers' employees, recognizing that they are the backbone of success in every operation. Through tailored safety campaigns, we prioritize the well-being of drivers and staff, equipping them with the knowledge and tools to maintain high safety standards. Our engagement initiatives are designed to boost morale, encourage professional growth, and foster a sense of belonging within the team. By creating a productive and supportive work environment, we help drive success, ensuring employees feel valued, motivated, and aligned with their company's goals.
       </>
     ),
   },
@@ -51,7 +54,7 @@ const corePrinciples = [
     title: 'Hire & Develop the Best',
     content: (
       <>
-        We are dedicated to hiring and developing top talent to best serve our customers, ensuring that our team is equipped with the skills, knowledge, and passion needed to deliver exceptional service. This same principle is seamlessly passed along to our customers’ businesses through customized hiring services designed to meet their specific needs. Whether it’s sourcing qualified drivers, selecting skilled dispatchers, or onboarding HR professionals, we tailor our approach to align with the unique demands of your operations. Beyond hiring, we focus on the development and retention of top talent, offering training programs, performance coaching, and continuous support to help employees excel and thrive in their roles. By investing in people, we empower businesses to achieve long-term success.
+        We are dedicated to hiring and developing top talent to best serve our customers, ensuring that our team is equipped with the skills, knowledge, and passion needed to deliver exceptional service. This same principle is seamlessly passed along to our customers' businesses through customized hiring services designed to meet their specific needs. Whether it's sourcing qualified drivers, selecting skilled dispatchers, or onboarding HR professionals, we tailor our approach to align with the unique demands of your operations. Beyond hiring, we focus on the development and retention of top talent, offering training programs, performance coaching, and continuous support to help employees excel and thrive in their roles. By investing in people, we empower businesses to achieve long-term success.
       </>
     ),
   },
@@ -67,7 +70,7 @@ const corePrinciples = [
     title: 'Bias for Action',
     content: (
       <>
-        We strive to earn trust by consistently delivering on our promises with speed and quality, understanding that action and reliability are key to building strong partnerships. Our commitment to taking action means we do what we say we will do, ensuring every effort is executed with precision, purpose, and a sense of urgency. We embrace calculated risks when they prioritize the success of your business. Whether it’s resolving issues swiftly, implementing innovative solutions, or responding to challenges, we act proactively and effectively to keep your operations running smoothly. By combining a sense of responsibility with a focus on outcomes, we help you stay ahead in the dynamic AFP world.
+        We strive to earn trust by consistently delivering on our promises with speed and quality, understanding that action and reliability are key to building strong partnerships. Our commitment to taking action means we do what we say we will do, ensuring every effort is executed with precision, purpose, and a sense of urgency. We embrace calculated risks when they prioritize the success of your business. Whether it's resolving issues swiftly, implementing innovative solutions, or responding to challenges, we act proactively and effectively to keep your operations running smoothly. By combining a sense of responsibility with a focus on outcomes, we help you stay ahead in the dynamic AFP world.
       </>
     ),
   },
@@ -83,7 +86,7 @@ const corePrinciples = [
     title: 'Earn Trust',
     content: (
       <>
-        We work diligently to build and uphold trust through honesty, transparency, and consistent value delivery. By offering thoughtful, reliable guidance and fostering meaningful, long-term relationships, we aim to create a foundation of trust that drives success for all parties involved. Your confidence in us is not just earned—it’s continuously nurtured.
+        We work diligently to build and uphold trust through honesty, transparency, and consistent value delivery. By offering thoughtful, reliable guidance and fostering meaningful, long-term relationships, we aim to create a foundation of trust that drives success for all parties involved. Your confidence in us is not just earned—it's continuously nurtured.
       </>
     ),
   },
@@ -99,7 +102,7 @@ const corePrinciples = [
     title: 'Deliver Results - Whatever it Takes to be Fantastic+, Safely',
     content: (
       <>
-        We are dedicated to delivering outstanding results, doing whatever it takes to safely achieve Fantastic+ status and drive our customers’ businesses forward. With a focus on safety, efficiency, and overall excellence scores, we align every effort with the high standards required. By maintaining accountability and prioritizing customer success, we help businesses not only reach but sustain their goals, building a strong foundation for long-term growth and excellence.
+        We are dedicated to delivering outstanding results, doing whatever it takes to safely achieve Fantastic+ status and drive our customers' businesses forward. With a focus on safety, efficiency, and overall excellence scores, we align every effort with the high standards required. By maintaining accountability and prioritizing customer success, we help businesses not only reach but sustain their goals, building a strong foundation for long-term growth and excellence.
       </>
     ),
   },
@@ -118,6 +121,22 @@ const ChevronIcon: React.FC<{ open: boolean }> = ({ open }) => (
 
 const WhyChooseUsAndLeadership: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { whyT360Data, loading, error } = useWhyTrucking360();
+
+  if (loading) {
+    return <LoadingOverlay />;
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Error Loading Page</h2>
+          <p className="text-gray-600">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <main>
@@ -128,124 +147,150 @@ const WhyChooseUsAndLeadership: React.FC = () => {
             className="text-2xl font-semibold text-center mb-2"
             data-aos="fade-up"
           >
-            Our Commitment to Excellence
+            {whyT360Data?.why_choose_us?.title || 'Our Commitment to Excellence'}
           </h2>
           <h1
             className="text-4xl font-bold text-center mb-6"
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            Why Choose Us!
+            {whyT360Data?.why_choose_us?.subtitle || 'Why Choose Us!'}
           </h1>
           <p
             className="text-center mb-12 max-w-3xl mx-auto"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Discover why we&apos;re the preferred choice for AFPs. With a client-first
-            approach, we deliver efficient, tailored solutions that drive your
-            business toward achieving a Fantastic Plus rating. Our team combines
-            expertise, transparency, and accountability to ensure your success,
-            supported by consistent performance and comprehensive services.
+            {whyT360Data?.why_choose_us?.description || 'Discover why we\'re the preferred choice for AFPs. With a client-first approach, we deliver efficient, tailored solutions that drive your business toward achieving a Fantastic Plus rating. Our team combines expertise, transparency, and accountability to ensure your success, supported by consistent performance and comprehensive services.'}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div
-              className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
-              data-aos="fade-right"
-              data-aos-delay="300"
-            >
-              <div className="mb-4">
-                <Image
-                  src="/images/reliability.svg"
-                  alt="Reliability Icon"
-                  width={48}
-                  height={48}
-                  className="feature-icon"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">
-                Reliability
-              </h3>
-              <p className="text-gray-300">
-                We guarantee that your loads are managed efficiently, meeting
-                Amazon&apos;s strict schedules and safety standards on every trip.
-              </p>
-            </div>
-            <div
-              className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <div className="mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="feature-icon w-12 h-12 text-secondary"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+            {whyT360Data?.why_choose_us?.features?.length ? (
+              whyT360Data.why_choose_us.features.map((feature, index) => (
+                <div
+                  key={feature.id}
+                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  data-aos="fade-up"
+                  data-aos-delay={300 + (index * 100)}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">
-                Cost Efficiency
-              </h3>
-              <p className="text-gray-300">
-                Through optimized dispatching and proactive planning, we help you
-                keep costs down while maintaining the highest level of service.
-              </p>
-            </div>
-            <div
-              className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <div className="mb-4">
-                <Image
-                  src="/images/safety.svg"
-                  alt="Safety Icon"
-                  width={48}
-                  height={48}
-                  className="feature-icon"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">
-                Safety-Driven Focus
-              </h3>
-              <p className="text-gray-300">
-                Our expert safety team offers detailed reports and guidance,
-                helping to minimize violations and protect your drivers and
-                business reputation.
-              </p>
-            </div>
-            <div
-              className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
-              data-aos="fade-left"
-              data-aos-delay="600"
-            >
-              <div className="mb-4">
-                <Image
-                  src="/images/solutions.svg"
-                  alt="Customized Solutions Icon"
-                  width={48}
-                  height={48}
-                  className="feature-icon"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">
-                Customized Solutions
-              </h3>
-              <p className="text-gray-300">
-                We understand that every AFP has unique needs. Our flexible
-                solutions are designed to your specific goals, ensuring alignment
-                with Amazon&apos;s high expectations.
-              </p>
-            </div>
+                  <div className="mb-4">
+                    <Image
+                      src={feature.icon ? getImageUrl(feature.icon) : "/images/reliability.svg"}
+                      alt={`${feature.title} Icon`}
+                      width={48}
+                      height={48}
+                      className="feature-icon"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-300">
+                    {feature.description}
+                  </p>
+                </div>
+              ))
+            ) : (
+              // Fallback to static content
+              <>
+                <div
+                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  data-aos="fade-right"
+                  data-aos-delay="300"
+                >
+                  <div className="mb-4">
+                    <Image
+                      src="/images/reliability.svg"
+                      alt="Reliability Icon"
+                      width={48}
+                      height={48}
+                      className="feature-icon"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">
+                    Reliability
+                  </h3>
+                  <p className="text-gray-300">
+                    We guarantee that your loads are managed efficiently, meeting
+                    Amazon&apos;s strict schedules and safety standards on every trip.
+                  </p>
+                </div>
+                <div
+                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  data-aos="fade-up"
+                  data-aos-delay="400"
+                >
+                  <div className="mb-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="feature-icon w-12 h-12 text-secondary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">
+                    Cost Efficiency
+                  </h3>
+                  <p className="text-gray-300">
+                    Through optimized dispatching and proactive planning, we help you
+                    keep costs down while maintaining the highest level of service.
+                  </p>
+                </div>
+                <div
+                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                >
+                  <div className="mb-4">
+                    <Image
+                      src="/images/safety.svg"
+                      alt="Safety Icon"
+                      width={48}
+                      height={48}
+                      className="feature-icon"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">
+                    Safety-Driven Focus
+                  </h3>
+                  <p className="text-gray-300">
+                    Our expert safety team offers detailed reports and guidance,
+                    helping to minimize violations and protect your drivers and
+                    business reputation.
+                  </p>
+                </div>
+                <div
+                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  data-aos="fade-left"
+                  data-aos-delay="600"
+                >
+                  <div className="mb-4">
+                    <Image
+                      src="/images/solutions.svg"
+                      alt="Customized Solutions Icon"
+                      width={48}
+                      height={48}
+                      className="feature-icon"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">
+                    Customized Solutions
+                  </h3>
+                  <p className="text-gray-300">
+                    We understand that every AFP has unique needs. Our flexible
+                    solutions are designed to your specific goals, ensuring alignment
+                    with Amazon&apos;s high expectations.
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -255,18 +300,23 @@ const WhyChooseUsAndLeadership: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8" data-aos="fade-up" data-aos-duration="800">
           <div className="max-w-2xl" data-aos="fade-right" data-aos-duration="1000">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              Our <span className="text-4xl md:text-5xl font-bold text-secondary mb-4">Mission</span>
+              {whyT360Data?.mission?.title ? (
+                whyT360Data.mission.title.includes('Mission') ? (
+                  whyT360Data.mission.title.replace('Mission', '<span class="text-secondary">Mission</span>')
+                ) : (
+                  whyT360Data.mission.title
+                )
+              ) : (
+                <>Our <span className="text-secondary">Mission</span></>
+              )}
             </h1>
             <p className="text-lg md:text-xl text-primary font-semibold leading-relaxed">
-              To empower AFPs by delivering top-tier management solutions tailored to enhance operational
-              efficiency, elevate excellence performance metrics, and secure high evaluations from Amazon. We
-              are dedicated to fostering a culture of continuous improvement, ensuring mutual growth, success,
-              and long-term partnerships that drive excellence across every aspect of your operations.
+              {whyT360Data?.mission?.description || 'To empower AFPs by delivering top-tier management solutions tailored to enhance operational efficiency, elevate excellence performance metrics, and secure high evaluations from Amazon. We are dedicated to fostering a culture of continuous improvement, ensuring mutual growth, success, and long-term partnerships that drive excellence across every aspect of your operations.'}
             </p>
           </div>
           <div className="mission-image max-w-[25%] ml-auto md:max-w-full md:ml-0 md:text-center">
             <Image 
-              src={missionImage} 
+              src={whyT360Data?.mission?.image ? getImageUrl(whyT360Data.mission.image) : missionImage} 
               alt="Mission Image" 
               width={400}
               height={300}
@@ -281,8 +331,8 @@ const WhyChooseUsAndLeadership: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-12 items-start" data-aos="fade-up" data-aos-duration="800">
           <div className="w-full md:w-1/2 mt-4 md:mt-[1%]" data-aos="fade-right" data-aos-duration="1300">
             <Image
-              src={leadershipImage}
-              alt="Leadership Nicholas Krave"
+              src={whyT360Data?.leadership?.image ? getImageUrl(whyT360Data.leadership.image) : leadershipImage}
+              alt={`Leadership ${whyT360Data?.leadership?.name || 'Nicholas Krave'}`}
               width={600}
               height={800}
               className="rounded-lg shadow-lg w-full"
@@ -290,24 +340,48 @@ const WhyChooseUsAndLeadership: React.FC = () => {
           </div>
           <div className="w-full md:w-2/3" data-aos="fade-left" data-aos-duration="1500">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Nicholas Krave
+              {whyT360Data?.leadership?.name || 'Nicholas Krave'}
             </h2>
             <h3 className="text-2xl font-bold text-primary mb-6">
-              President, Trucking <span className="text-secondary">360</span>
+              {whyT360Data?.leadership?.title ? (
+                whyT360Data.leadership.title.includes('360') ? (
+                  whyT360Data.leadership.title.split('360').map((part, index, array) => (
+                    index === array.length - 1 ? part : (
+                      <React.Fragment key={index}>
+                        {part}<span className="text-secondary">360</span>
+                      </React.Fragment>
+                    )
+                  ))
+                ) : (
+                  whyT360Data.leadership.title
+                )
+              ) : (
+                <>President, Trucking <span className="text-secondary">360</span></>
+              )}
             </h3>
             <div className="space-y-6 text-primary">
-              <p className="leading-relaxed font-semibold">
-                Hi, my name is Nick, and I’m proud to serve as the President of Trucking <span className="text-secondary">360</span>. I am an Ohio native with my degree from Ferris State University in Big Rapids, Michigan. After college, I developed a deep passion for logistics and everything it takes to keep things moving smoothly. Throughout my career, I’ve been dedicated to creating efficient, customer-centered solutions that prioritize flexibility and operational excellence.
-              </p>
-              <p className="leading-relaxed font-semibold">
-                Beyond logistics, I have a big love for dogs and believe that genuine connections and clear communication make all the difference. Not only with dogs but, in business too! That’s why you can always count on me being just one call away whenever you need support.
-              </p>
-              <p className="leading-relaxed font-semibold">
-                With Trucking <span className="text-secondary">360</span>, I’ve worked hard to build a team that shares my obsession with customer success and excellence. You can count on my team and I to be focused on doing whatever it takes to ensure you achieve and maintain a Fantastic Plus rating. Together, we’re here to be more than just a service provider—we’re your partner, fully committed to helping your business thrive.
-              </p>
-              <p className="leading-relaxed font-semibold">
-                We proudly align our leadership principles with those of Amazon to best serve our customers. These principles guide every action we take, from putting our customers first and fostering engagement within their teams, to delivering with speed, precision, and integrity. Our commitment ensures we consistently provide value and exceptional results to our customers.
-              </p>
+              {whyT360Data?.leadership?.bio_paragraphs?.length ? (
+                whyT360Data.leadership.bio_paragraphs.map((paragraph, index) => (
+                  <p key={index} className="leading-relaxed font-semibold">
+                    {paragraph}
+                  </p>
+                ))
+              ) : (
+                <>
+                  <p className="leading-relaxed font-semibold">
+                    Hi, my name is Nick, and I'm proud to serve as the President of Trucking <span className="text-secondary">360</span>. I am an Ohio native with my degree from Ferris State University in Big Rapids, Michigan. After college, I developed a deep passion for logistics and everything it takes to keep things moving smoothly. Throughout my career, I've been dedicated to creating efficient, customer-centered solutions that prioritize flexibility and operational excellence.
+                  </p>
+                  <p className="leading-relaxed font-semibold">
+                    Beyond logistics, I have a big love for dogs and believe that genuine connections and clear communication make all the difference. Not only with dogs but, in business too! That's why you can always count on me being just one call away whenever you need support.
+                  </p>
+                  <p className="leading-relaxed font-semibold">
+                    With Trucking <span className="text-secondary">360</span>, I've worked hard to build a team that shares my obsession with customer success and excellence. You can count on my team and I to be focused on doing whatever it takes to ensure you achieve and maintain a Fantastic Plus rating. Together, we're here to be more than just a service provider—we're your partner, fully committed to helping your business thrive.
+                  </p>
+                  <p className="leading-relaxed font-semibold">
+                    We proudly align our leadership principles with those of Amazon to best serve our customers. These principles guide every action we take, from putting our customers first and fostering engagement within their teams, to delivering with speed, precision, and integrity. Our commitment ensures we consistently provide value and exceptional results to our customers.
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -320,7 +394,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
             Our Core Principles
           </h2>
           <div className="max-w-3xl mx-auto space-y-4">
-            {corePrinciples.map((item, idx) => (
+            {(whyT360Data?.core_principles?.length ? whyT360Data.core_principles : corePrinciples).map((item, idx) => (
               <div
                 key={item.title}
                 className="bg-white rounded-lg shadow-md"
@@ -354,4 +428,10 @@ const WhyChooseUsAndLeadership: React.FC = () => {
   );
 };
 
-export default WhyChooseUsAndLeadership;
+export default function WhyTrucking360Page() {
+  return (
+    <WhyTrucking360Provider>
+      <WhyChooseUsAndLeadership />
+    </WhyTrucking360Provider>
+  );
+}

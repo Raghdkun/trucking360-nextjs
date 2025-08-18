@@ -11,6 +11,8 @@ export const API_CONFIG = {
     HOMEPAGE: '/homepage',
     PRICING: '/pricing',
     NEWSLETTER: '/newsletter',
+    WHY_T360: '/why-t360',
+    DASHBOARD360: '/dashboard360',
   },
   TIMEOUT: 10000, // 10 seconds
   HEADERS: {
@@ -225,4 +227,68 @@ export interface NewsletterData {
 export interface NewsletterApiResponse {
   success: boolean;
   data: NewsletterData;
+}
+
+// Why Trucking 360 Data Types
+export interface MissionData {
+  title: string;
+  description: string;
+  image: string;
+}
+
+export interface LeadershipData {
+  name: string;
+  title: string;
+  image: string;
+  bio_paragraphs: string[];
+}
+
+export interface CorePrinciple {
+  id: number;
+  title: string;
+  content: string;
+  order: number;
+}
+
+export interface WhyChooseUsFeature {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+  order: number;
+}
+
+export interface WhyT360Data {
+  mission: MissionData;
+  leadership: LeadershipData;
+  core_principles: CorePrinciple[];
+  why_choose_us: {
+    title: string;
+    subtitle: string;
+    description: string;
+    features: WhyChooseUsFeature[];
+  };
+}
+
+export interface WhyT360ApiResponse {
+  success: boolean;
+  data: WhyT360Data;
+}
+
+// Dashboard360 Data Types
+export interface Dashboard360Data {
+  id: number;
+  singleton: number;
+  title: string;
+  description: string;
+  video: string;
+  btn_text: string;
+  btn_link: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Dashboard360ApiResponse {
+  success: boolean;
+  data: Dashboard360Data;
 }
