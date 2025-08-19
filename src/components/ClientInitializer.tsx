@@ -74,8 +74,17 @@ export function ClientInitializer({ children }: { children: React.ReactNode }) {
       
       if (anchor && anchor.href) {
         const url = new URL(anchor.href);
-        // Don't show spinner for external links, new tabs, or same-page hash links
-        if (url.origin === window.location.origin && anchor.target !== '_blank' && !anchor.href.includes('#')) {
+        const currentUrl = new URL(window.location.href);
+        
+        // Don't show spinner for:
+        // - External links
+        // - Links that open in new tabs
+        // - Same-page hash links
+        // - Links that navigate to the exact same page (same pathname)
+        if (url.origin === window.location.origin && 
+            anchor.target !== '_blank' && 
+            !anchor.href.includes('#') &&
+            url.pathname !== currentUrl.pathname) {
           setIsLoading(true);
         }
       }

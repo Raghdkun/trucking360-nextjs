@@ -154,7 +154,7 @@ const PricingPageContent: React.FC = () => {
 
                 {/* Plans Section */}
                 <section className="mb-16 px-4" data-aos="fade-up" data-aos-delay="600">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
                         {sortedPlans.map((plan) => {
                             const features = parseFeatures(plan.features);
                             const isCustomizable = plan.is_customizable;
@@ -242,7 +242,7 @@ const PricingPageContent: React.FC = () => {
                 {/* Tables Section */}
                 <section className="mb-16 py-16" data-aos="fade-left" data-aos-delay="500">
                     {data.tables.map((table) => (
-                        <div key={table.id} className="relative overflow-x-auto shadow-md sm:rounded-lg mb-12">
+                        <div key={table.id} className=" round-edges relative overflow-x-auto shadow-md sm:rounded-lg mb-12">
                             <table className="w-full text-sm text-gray-900 border border-gray-300">
                                 <thead>
                                     <tr className="bg-primary text-white border-b border-gray-300">
@@ -276,21 +276,26 @@ const PricingPageContent: React.FC = () => {
                             {sortedFaqs.map((faq, index) => (
                                 <div key={faq.id} className="bg-white rounded-lg shadow-md">
                                     <button
-                                        className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded-lg"
+                                        className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors duration-200"
                                         onClick={() => handleFaqToggle(index)}
                                         onKeyDown={(e) => handleFaqKeyDown(e, index)}
                                         aria-expanded={openFaqIndex === index}
                                     >
-                                        <span className="font-medium text-gray-900">{faq.title}</span>
-                                        <FaChevronDown 
-                                            className={`text-primary transition-transform duration-200 ${
-                                                openFaqIndex === index ? 'transform rotate-180' : ''
-                                            }`} 
-                                        />
+                                        <span className="text-lg font-semibold text-primary pr-4">{faq.title}</span>
+                                        <span className="text-secondary text-xl font-bold flex-shrink-0">
+                                            {openFaqIndex === index ? '−' : '+'}
+                                        </span>
                                     </button>
                                     {openFaqIndex === index && (
-                                        <div className="px-6 pb-4">
-                                            <p className="text-gray-700">{faq.description}</p>
+                                        <div 
+                                            className="px-6 some-bottom-padding animate-fadeInSlide"
+                                            style={{
+                                                animation: 'fadeInSlide 0.3s ease-out forwards'
+                                            }}
+                                        >
+                                            <div className="border-t border-gray-200 pt-4">
+                                                <p className="text-primary">{faq.description}</p>
+                                            </div>
                                         </div>
                                     )}
                                 </div>

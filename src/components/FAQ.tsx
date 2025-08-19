@@ -59,8 +59,13 @@ const FAQ = () => {
                 </button>
                 
                 {openIndex === index && (
-                  <div className="px-6 pb-4">
-                    <div className="border-t border-gray-200 pt-4">
+                  <div 
+                    className="px-6 pb-4 animate-fadeInSlide"
+                    style={{
+                      animation: 'fadeInSlide 0.3s ease-out forwards'
+                    }}
+                  >
+                    <div className="border-t border-gray-200 pt-4 some-bottom-padding">
                       <div 
                         className="text-primary leading-relaxed"
                         dangerouslySetInnerHTML={{ __html: faq.description.replace(/\n/g, '<br>') }}

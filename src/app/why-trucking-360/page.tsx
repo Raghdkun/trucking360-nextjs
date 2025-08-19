@@ -141,7 +141,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
   return (
     <main>
       {/* Why Choose Us Section (placed first) */}
-      <section id="why" className="py-16 text-primary bg-gray-100">
+      <section id="why" className="py-20 text-primary bg-gray-100">
         <div className="container mx-auto px-4">
           <h2
             className="text-2xl font-semibold text-center mb-2"
@@ -168,7 +168,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
               whyT360Data.why_choose_us.features.map((feature, index) => (
                 <div
                   key={feature.id}
-                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  className=" bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
                   data-aos="fade-up"
                   data-aos-delay={300 + (index * 100)}
                 >
@@ -193,7 +193,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
               // Fallback to static content
               <>
                 <div
-                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  className=" bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
                   data-aos="fade-right"
                   data-aos-delay="300"
                 >
@@ -215,7 +215,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
                   </p>
                 </div>
                 <div
-                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  className=" bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
                   data-aos="fade-up"
                   data-aos-delay="400"
                 >
@@ -244,7 +244,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
                   </p>
                 </div>
                 <div
-                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  className="bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
                   data-aos="fade-up"
                   data-aos-delay="500"
                 >
@@ -267,7 +267,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
                   </p>
                 </div>
                 <div
-                  className="feature-card bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
+                  className="bg-primary p-6 rounded-lg transition-all duration-300 transform hover:-translate-y-2"
                   data-aos="fade-left"
                   data-aos-delay="600"
                 >
@@ -328,8 +328,8 @@ const WhyChooseUsAndLeadership: React.FC = () => {
 
       {/* Leadership Section */}
       <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="flex flex-col md:flex-row gap-12 items-start" data-aos="fade-up" data-aos-duration="800">
-          <div className="w-full md:w-1/2 mt-4 md:mt-[1%]" data-aos="fade-right" data-aos-duration="1300">
+        <div className="flex flex-col lg:flex-row gap-12 items-start" data-aos="fade-up" data-aos-duration="800">
+          <div className="w-full lg:w-1/2 mt-4 lg:mt-[1%]" data-aos="fade-in" data-aos-duration="1300">
             <Image
               src={whyT360Data?.leadership?.image ? getImageUrl(whyT360Data.leadership.image) : leadershipImage}
               alt={`Leadership ${whyT360Data?.leadership?.name || 'Nicholas Krave'}`}
@@ -338,7 +338,7 @@ const WhyChooseUsAndLeadership: React.FC = () => {
               className="rounded-lg shadow-lg w-full"
             />
           </div>
-          <div className="w-full md:w-2/3" data-aos="fade-left" data-aos-duration="1500">
+          <div className="w-full lg:w-1/2" data-aos="fade-in" data-aos-duration="1500">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
               {whyT360Data?.leadership?.name || 'Nicholas Krave'}
             </h2>
@@ -412,13 +412,18 @@ const WhyChooseUsAndLeadership: React.FC = () => {
                   <span className="text-lg font-semibold text-primary">{item.title}</span>
                   <ChevronIcon open={openIndex === idx} />
                 </button>
-                <div
-                  id={`faq-content-${idx}`}
-                  className={`${openIndex === idx ? '' : 'hidden'} p-4 border-t`}
-                  aria-labelledby={`faq-header-${idx}`}
-                >
-                  <p className="text-primary">{item.content}</p>
-                </div>
+                {openIndex === idx && (
+                  <div
+                    id={`faq-content-${idx}`}
+                    className="p-4 border-t animate-fadeInSlide"
+                    style={{
+                      animation: 'fadeInSlide 0.3s ease-out forwards'
+                    }}
+                    aria-labelledby={`faq-header-${idx}`}
+                  >
+                    <p className="text-primary">{item.content}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>

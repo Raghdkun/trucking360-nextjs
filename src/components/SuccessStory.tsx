@@ -22,10 +22,10 @@ const SuccessStory = () => {
   return (
     <section className="mx-auto px-6 py-16 md:py-24 lg:px-8 bg-gray-100">
       <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="relative aspect-video bg-black rounded-xl overflow-hidden shadow-xl" data-aos="fade-in"
+        <div className="relative aspect-video bg-black round-edges rounded-xl overflow-hidden shadow-xl" data-aos="fade-in"
           data-aos-duration="800" data-aos-delay="200">
           <video
-            className="w-full h-auto"
+            className="w-full h-auto round-edges"
             controls
           >
             <source src={videoUrl} type="video/mp4" />

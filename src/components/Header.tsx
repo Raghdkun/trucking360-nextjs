@@ -57,7 +57,8 @@ const Header = () => {
     <>
       {/* Header */}
       <header id="header" className="fixed w-full z-50 transition-all duration-300 bg-white shadow-md">
-        <div className="container mx-auto px-6 py-3">
+        <div className="w-full px-2  py-3">
+
           <div className="flex justify-between items-center">
             {/* Logo */}
             <Link href="/" id="logo" className="text-2xl font-bold text-primary">
@@ -80,14 +81,15 @@ const Header = () => {
 
             {/* Desktop Navigation Menu (Hidden on Mobile) */}
             <nav id="menu" className="hidden lg:block">
-              <ul className="flex flex-row items-center space-x-6">
+              <ul className="flex flex-row items-center space-x-2  xl:space-x-6">
                 <li>
-                  <Link href="/why-trucking-360" className="block px-4 py-2 text-center text-primary hover:text-secondary transition-colors duration-300 font-bold">
+                  <Link href="/why-trucking-360" className="block px-2 xl:px-4 py-2 text-center text-primary hover:text-secondary transition-colors duration-300 font-bold">
+
                     Why Trucking <span style={{ color: '#e93232' }}>360</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/pricing" className="block px-4 py-2 text-center text-primary hover:text-secondary transition-colors duration-300 font-bold">
+                  <Link href="/pricing" className="block px-2 xl:px-4 py-2 text-center text-primary hover:text-secondary transition-colors duration-300 font-bold">
                     Services & Pricing
                   </Link>
                 </li>
@@ -101,7 +103,7 @@ const Header = () => {
                   <button
                     id="resourcesDropdownButton"
                     onClick={() => setIsResourcesOpen(!isResourcesOpen)}
-                    className="block px-4 py-2 text-center text-primary hover:text-secondary transition-colors duration-300 font-bold focus:outline-none"
+                    className="block px-2 xl:px-4 py-2 text-center text-primary hover:text-secondary transition-colors duration-300 font-bold focus:outline-none"
                   >
                     Resources
                     <svg className="w-4 h-4 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -109,20 +111,20 @@ const Header = () => {
                     </svg>
                   </button>
                   <ul id="resourcesDropdownMenu" className={`absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ${isResourcesOpen ? '' : 'hidden'}`}>
-                    <li><Link href="/newsletter" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Newsletter</Link></li>
+                    <li><Link href="/newsletter" className="block px-2 xl:px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Newsletter</Link></li>
                     {/* <li><Link href="/faqs" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQs</Link></li> */}
-                    <li><Link href="/comingsoon" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Resources</Link></li>
+                    <li><Link href="/comingsoon" className="block px-2 xl:px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Resources</Link></li>
                   </ul>
                 </li>
                 {/* "Book a Meeting" Button */}
                 <li>
-                  <Link href={btn1Link} className="block px-4 py-2 text-center text-white bg-primary border border-primary hover:bg-white hover:text-secondary rounded transition-colors duration-300 font-bold">
+                  <Link href={btn1Link} className="block px-2 xl:px-4 py-2 text-center text-white bg-primary border border-primary hover:bg-white hover:text-secondary rounded transition-colors duration-300 font-bold">
                     {btn1Name}
 
                   </Link>
                 </li>
                 <li>
-                  <Link href={btn2Link} className="block px-4 py-2 text-center text-white bg-secondary border border-secondary hover:bg-white hover:text-secondary rounded transition-colors duration-300 font-bold">
+                  <Link href={btn2Link} className="block px-2 xl:px-4 py-2 text-center text-white bg-secondary border border-secondary hover:bg-white hover:text-secondary rounded transition-colors duration-300 font-bold">
                     {btn2Name}
                   </Link>
                 </li>

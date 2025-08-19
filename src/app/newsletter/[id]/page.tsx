@@ -62,7 +62,7 @@ const ArticleContent: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 font-sans min-h-screen pt-20 pb-24">
+    <div className="bg-gray-100 font-sans min-h-screen pt-16 pb-24 away-from-header">
       <main className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="mb-8">
@@ -93,7 +93,7 @@ const ArticleContent: React.FC = () => {
         {/* Featured Image */}
         <div className="mb-12">
           <div className="max-w-4xl mx-auto">
-            <div className="relative h-64 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative h-64 md:h-96 lg:h-[500px] round-edges rounded-2xl overflow-hidden shadow-lg">
               <Image
                 src={article.featured_image}
                 alt={article.title}
@@ -108,7 +108,7 @@ const ArticleContent: React.FC = () => {
         {/* Article Content */}
         <article className="mb-12">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+            <div className="bg-white round-edges rounded-2xl shadow-lg p-8 md:p-12">
               <div 
                 className="prose prose-lg max-w-none"
                 dangerouslySetInnerHTML={{ __html: article.content }}

@@ -15,9 +15,9 @@ function Dashboard360Content() {
 
   if (loading) {
     return (
-      <section id="dashboard360" className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 lg:px-8">
-          <div className="flex justify-center items-center min-h-[400px]">
+      <section id="dashboard360" className="min-h-screen bg-gray-100 flex flex-col justify-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex-grow flex items-center justify-center">
+          <div className="flex justify-center items-center">
             <Spinner />
           </div>
         </div>
@@ -27,8 +27,8 @@ function Dashboard360Content() {
 
   if (error) {
     return (
-      <section id="dashboard360" className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 lg:px-8">
+      <section id="dashboard360" className="min-h-screen bg-gray-100 flex flex-col justify-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex-grow flex items-center justify-center">
           <div className="text-center">
             <p className="text-red-600 mb-4">Error loading Dashboard360 data: {error}</p>
             <p className="text-gray-600">Please try again later.</p>
@@ -50,12 +50,12 @@ function Dashboard360Content() {
   const data = dashboard360Data || fallbackData;
 
   return (
-    <section id="dashboard360" className="py-20 bg-gray-100">
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section id="dashboard360" className="min-h-screen bg-gray-100 flex flex-col justify-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex-grow flex items-center justify-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center w-full">
           {/* Left Column - Video */}
           <div 
-            className="relative aspect-video bg-black rounded-xl overflow-hidden shadow-xl" 
+            className="relative aspect-video bg-black round-edges rounded-xl overflow-hidden shadow-xl" 
             data-aos="fade-in"
             data-aos-duration="800" 
             data-aos-delay="200"

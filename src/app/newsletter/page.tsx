@@ -75,7 +75,7 @@ const NewsletterContent: React.FC = () => {
               <Link 
                 key={article.id} 
                 href={`/newsletter/${article.id}`}
-                className="group block bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="group block bg-white round-edges rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image

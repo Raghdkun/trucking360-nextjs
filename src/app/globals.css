@@ -1,5 +1,16 @@
 /* @import "tailwindcss"; */
 
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 640px) {
     h1 {
         font-size: 2rem !important;
@@ -861,5 +872,16 @@ html {
   font-style: italic;
   color: #4b5563;
 }
-
 /* ... existing code ... */
+.away-from-header{
+    padding-top: 5rem;
+}
+
+.round-edges{
+    border-radius: 1rem;
+}
+
+.some-bottom-padding{
+    padding-bottom: 1rem;
+
+}

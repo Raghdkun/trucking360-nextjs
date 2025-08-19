@@ -17,6 +17,7 @@ const HeroSection: React.FC<HeroProps> = ({ website_name }) => {
   const { homepageData, loading } = useHomepage();
 
   useEffect(() => {
+    // This runs every time homepageData changes!
     AOS.init({
       duration: 1000,
       once: true,
@@ -35,7 +36,7 @@ const HeroSection: React.FC<HeroProps> = ({ website_name }) => {
         typed.destroy();
       };
     }
-  }, [homepageData]);
+  }, [homepageData]); // This dependency causes the issue
 
   if (loading) {
     return (
