@@ -192,12 +192,12 @@ const DashboardSlider: React.FC = () => {
             </Swiper>
 
             {/* Custom Navigation & Pagination Elements */}
-            <div className="custom-nav-prev hidden md:flex">
+            <div className="custom-nav-prev">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left">
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
             </div>
-            <div className="custom-nav-next hidden md:flex">
+            <div className="custom-nav-next">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-right">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
@@ -273,6 +273,14 @@ const DashboardSlider: React.FC = () => {
           cursor: pointer;
           transition: all 0.3s ease;
           box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Hide navigation buttons on small screens */
+        @media (max-width: 767px) {
+          .custom-nav-next,
+          .custom-nav-prev {
+            display: none;
+          }
         }
         .custom-nav-next {
           right: -20px;
