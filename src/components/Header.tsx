@@ -67,9 +67,11 @@ const Header = () => {
                 alt="Trucking 360 Logo" 
                 width={120} 
                 height={46} 
-                className="h-8 w-auto " 
+                className="h-8 w-auto" 
                 priority
                 quality={100}
+                unoptimized
+                sizes="(max-width: 768px) 120px, (max-width: 1024px) 140px, 160px"
               />
             </Link>
 
