@@ -12,36 +12,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 1.0,
+      name: 'Home - Trucking 360 Solutions',
     },
     {
       url: `${baseUrl}/why-trucking-360`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
+      name: 'Why Choose Trucking 360 - Your Partner to Fantastic Plus',
     },
     {
       url: `${baseUrl}/pricing`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
+      name: 'Pricing Plans - Trucking 360 Solutions',
     },
     {
       url: `${baseUrl}/contact-us`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+      name: 'Contact Us - Trucking 360 Solutions',
     },
     {
       url: `${baseUrl}/dashboard360`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+      name: 'Dashboard 360 - Real-Time Analytics & Performance Tracking',
     },
     {
       url: `${baseUrl}/booking`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
+      name: 'Book a Consultation - Trucking 360 Solutions',
     },
     // Newsletter main page
     {
@@ -49,6 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
+      name: 'Newsletter - Trucking 360 Solutions',
     },
     // Note: Excluding /comingsoon as it's likely a placeholder page
   ]
@@ -65,6 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(article.custom_date),
         changeFrequency: 'monthly' as const,
         priority: 0.6,
+        name: `${article.title} - Newsletter - Trucking 360`,
       }))
     }
   } catch (error) {
