@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { API_CONFIG } from '@/config/constants'
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 // Function to fetch article data for metadata generation
@@ -29,7 +29,8 @@ async function getArticle(id: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = await getArticle(params.id)
+  const { id } = await params
+  const article = await getArticle(id)
   
   if (!article) {
     return {
