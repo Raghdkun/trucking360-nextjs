@@ -241,31 +241,55 @@ const PricingPageContent: React.FC = () => {
 
                 {/* Tables Section */}
                 <section className="mb-16 py-16" data-aos="fade-left" data-aos-delay="500">
-                    {data.tables.map((table) => (
-                        <div key={table.id} className=" round-edges relative overflow-x-auto shadow-md sm:rounded-lg mb-12">
-                            <table className="w-full text-sm text-gray-900 border border-gray-300">
-                                <thead>
-                                    <tr className="bg-primary text-white border-b border-gray-300">
-                                        <th colSpan={2} className="text-2xl font-bold px-6 py-4">
-                                            {table.title}
-                                        </th>
-                                    </tr>
-                                    <tr className="bg-primary border-b border-gray-300 bg-opacity-50">
-                                        <th scope="col" className="px-6 py-3">Service</th>
-                                        <th scope="col" className="px-6 py-3">Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {table.contents.map((content, index) => (
-                                        <tr key={content.id} className={index % 2 === 0 ? "bg-white border-b border-gray-300" : "bg-primary/10 border-b border-gray-300"}>
-                                            <td className="px-6 py-4 font-medium">{content.service_name}</td>
-                                            <td className="px-6 py-4" dangerouslySetInnerHTML={{ __html: content.description }}></td>
+                    {data.tables.map((table) => {
+                        // Split services into regular and safety services
+                        const regularServices = table.contents.filter(content => !content.is_safety);
+                        const safetyServices = table.contents.filter(content => content.is_safety);
+                        
+                        return (
+                            <div key={table.id} className="round-edges relative overflow-x-auto shadow-md sm:rounded-lg mb-12">
+                                <table className="w-full text-sm text-gray-900 border border-gray-300">
+                                    <thead>
+                                        <tr className="bg-primary text-white border-b border-gray-300">
+                                            <th colSpan={2} className="text-2xl font-bold px-6 py-4">
+                                                {table.title}
+                                            </th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    ))}
+                                        <tr className="bg-primary border-b border-gray-300 bg-opacity-50">
+                                            <th scope="col" className="px-6 py-3">Service</th>
+                                            <th scope="col" className="px-6 py-3">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {/* Regular Services */}
+                                        {regularServices.map((content, index) => (
+                                            <tr key={content.id} className={index % 2 === 0 ? "bg-white border-b border-gray-300" : "bg-primary/10 border-b border-gray-300"}>
+                                                <td className="px-6 py-4 font-medium">{content.service_name}</td>
+                                                <td className="px-6 py-4" dangerouslySetInnerHTML={{ __html: content.description }}></td>
+                                            </tr>
+                                        ))}
+                                        
+                                        {/* Safety Services Section */}
+                                        {safetyServices.length > 0 && (
+                                            <>
+                                                <tr className="bg-secondary text-white border-b border-gray-300">
+                                                    <th colSpan={2} className="text-lg font-bold px-6 py-2 text-center">
+                                                        Safety Features are included
+                                                    </th>
+                                                </tr>
+                                                {safetyServices.map((content, index) => (
+                                                    <tr key={content.id} className={index % 2 === 0 ? "bg-white border-b border-gray-300" : "bg-secondary/10 border-b border-gray-300"}>
+                                                        <td className="px-6 py-4 font-medium">{content.service_name}</td>
+                                                        <td className="px-6 py-4" dangerouslySetInnerHTML={{ __html: content.description }}></td>
+                                                    </tr>
+                                                ))}
+                                            </>
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
+                        );
+                    })}
                 </section>
 
                 {/* FAQ Section */}

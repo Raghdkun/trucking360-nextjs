@@ -57,12 +57,20 @@ const Header = () => {
     <>
       {/* Header */}
       <header id="header" className="fixed w-full z-50 transition-all duration-300 bg-white shadow-md">
-        <div className="w-full px-2  py-3">
+        <div className="container mx-auto px-6 py-3">
 
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center lg:justify-center lg:gap-16 xl:gap-24">
             {/* Logo */}
-            <Link href="/" id="logo" className="text-2xl font-bold text-primary">
-              <Image src={logoImage} alt="Trucking 360 Logo" width={120} height={32} className="h-8 w-auto" />
+            <Link href="/" id="logo" className="text-2xl font-bold text-primary lg:absolute lg:left-8 xl:left-12">
+              <Image 
+                src={logoImage} 
+                alt="Trucking 360 Logo" 
+                width={120} 
+                height={46} 
+                className="h-8 w-auto " 
+                priority
+                quality={100}
+              />
             </Link>
 
             {/* Mobile Menu Toggle Button (Visible on Mobile & Tablet Only) */}
@@ -81,7 +89,7 @@ const Header = () => {
 
             {/* Desktop Navigation Menu (Hidden on Mobile) */}
             <nav id="menu" className="hidden lg:block">
-              <ul className="flex flex-row items-center space-x-2  xl:space-x-6">
+              <ul className="flex flex-row items-center space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-10">
                 <li>
                   <Link href="/why-trucking-360" className="block px-2 xl:px-4 py-2 text-center text-primary hover:text-secondary transition-colors duration-300 font-bold">
 
@@ -93,11 +101,11 @@ const Header = () => {
                     Services & Pricing
                   </Link>
                 </li>
-                {/* <li>
-                  <Link href="/contact-us" className="block px-4 py-2 text-center text-primary hover:text-secondary transition-colors duration-300 font-bold">
+                <li>
+                  <Link href="/contact-us" className="block px-2 xl:px-4 py-2 text-center text-primary hover:text-secondary transition-colors duration-300 font-bold">
                     Contact
                   </Link>
-                </li> */}
+                </li>
                 {/* Resources Dropdown */}
                 <li className="relative">
                   <button
@@ -116,11 +124,10 @@ const Header = () => {
                     <li><Link href="/comingsoon" className="block px-2 xl:px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Resources</Link></li>
                   </ul>
                 </li>
-                {/* "Book a Meeting" Button */}
-                <li>
+                {/* Action Buttons with extra spacing */}
+                <li className="ml-4 lg:ml-6 xl:ml-8">
                   <Link href={btn1Link} className="block px-2 xl:px-4 py-2 text-center text-white bg-primary border border-primary hover:bg-white hover:text-secondary rounded transition-colors duration-300 font-bold">
                     {btn1Name}
-
                   </Link>
                 </li>
                 <li>
@@ -162,11 +169,11 @@ const Header = () => {
                   Services & Pricing
                 </Link>
               </li>
-              {/* <li>
+              <li>
                 <Link href="/contact-us" onClick={handleMobileLinkClick} className="text-primary text-2xl font-semibold hover:text-secondary transition-colors duration-300">
                   Contact
                 </Link>
-              </li> */}
+              </li>
               {/* Resources Dropdown (Mobile & Tablet) */}
               <li className="relative">
                 <button

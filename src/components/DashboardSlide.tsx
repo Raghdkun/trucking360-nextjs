@@ -102,7 +102,7 @@ const DashboardSlider: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-12" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Introducing Dashboard 360
+              Introducing Dashboard <span className="text-secondary">360</span>
             </h2>
             <h3 className="text-xl md:text-2xl font-bold text-primary mb-4">
               Fully Automated – No Manual Entry by the User
@@ -137,12 +137,18 @@ const DashboardSlider: React.FC = () => {
               fadeEffect={{ crossFade: true }}
               loop={true}
               autoplay={{
-                delay: 15000,
+                delay: 8000,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: false,
+                reverseDirection: false,
+                stopOnLastSlide: false,
+                waitForTransition: true,
               }}
               speed={800}
               slidesPerView={1}
               spaceBetween={30}
+              allowTouchMove={true}
+              touchStartPreventDefault={false}
               pagination={{
                 el: '.custom-pagination',
                 clickable: true,
