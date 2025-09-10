@@ -97,7 +97,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={poppins.variable} suppressHydrationWarning={true}>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-J6R7YQXBJK"
