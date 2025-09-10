@@ -70,18 +70,9 @@ const ClientInfoContent: React.FC = () => {
   }, [searchParams]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50  py-20 pt-32">
       {/* Hero Section */}
-      <section className="bg-primary text-white py-20 pt-32">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up">
-            Client Information
-          </h1>
-          <p className="text-lg sm:text-xl opacity-90 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-            Please fill out the form below to provide your client information and get started with our services.
-          </p>
-        </div>
-      </section>
+ 
 
       {/* Form Section */}
       <section className="py-8 sm:py-12 md:py-20 bg-gray-100 overflow-hidden">
@@ -96,8 +87,8 @@ const ClientInfoContent: React.FC = () => {
                   aria-label="Client info"
                   className="w-full border-none rounded"
                   style={{
-                    height: 'clamp(600px, 80vh, 1024px)',
-                    minHeight: '600px'
+                    height: 'auto',
+                    minHeight: '100rem'
                   }}
                   src={iframeUrl}
                   title="Client Information Form"
