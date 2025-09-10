@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -10,7 +10,7 @@ interface SelectedServices {
   [key: string]: string | boolean;
 }
 
-const ClientInfoPage: React.FC = () => {
+const ClientInfoContent: React.FC = () => {
   const [iframeUrl, setIframeUrl] = useState(
     'https://forms.zohopublic.com/t360portal1/form/ClientInfoVersion2/formperma/fLxRX9M5JpogXoZuFpTaHAqplh4d6f3g1smhD5X15ww'
   );
@@ -108,6 +108,14 @@ const ClientInfoPage: React.FC = () => {
         </div>
       </section>
     </div>
+  );
+};
+
+const ClientInfoPage: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ClientInfoContent />
+    </Suspense>
   );
 };
 
